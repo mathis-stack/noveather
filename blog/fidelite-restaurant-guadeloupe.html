@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fidélisation client pour restaurants en Guadeloupe : le guide complet — Noveather</title>
+  <meta name="description" content="Comment fidéliser vos clients de restaurant en Guadeloupe avec une carte digitale ? Carte Reward, notifications push, parrainage — guide complet 2025.">
+  <link rel="canonical" href="https://noveather.fr/blog/fidelite-restaurant-guadeloupe">
+  <meta property="og:title" content="Fidélisation client pour restaurants en Guadeloupe : le guide complet">
+  <meta property="og:description" content="Comment fidéliser vos clients de restaurant en Guadeloupe avec une carte digitale ? Le guide complet 2025.">
+  <meta property="og:url" content="https://noveather.fr/blog/fidelite-restaurant-guadeloupe">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d14;
+      --bg-card: rgba(255,255,255,0.03);
+      --bg-card-hover: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.15);
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.55);
+      --text-subtle: rgba(255,255,255,0.35);
+      --accent-start: #3b82f6;
+      --accent-end: #10b981;
+      --accent: linear-gradient(90deg, #3b82f6, #10b981);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-pill: 100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 20px; transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled { background: var(--bg); box-shadow: 0 1px 0 var(--border); }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-gradient {
+      background: var(--accent); color: #fff; border-radius: var(--radius-pill);
+      padding: 10px 22px; font-weight: 600; font-size: 0.88rem;
+      border: none; cursor: pointer; display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--accent); color: #fff; border-radius: var(--radius-pill);
+      padding: 13px 28px; font-weight: 600; font-size: 0.95rem;
+      border: none; cursor: pointer; display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 24px 20px; z-index: 99; flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; color: var(--text-muted); padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:hover { color: var(--text); }
+
+    .article-hero {
+      padding: 140px 20px 60px; border-bottom: 1px solid var(--border);
+      max-width: 820px; margin: 0 auto;
+    }
+    .article-meta {
+      font-size: 0.82rem; color: var(--text-subtle); margin-bottom: 20px;
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    }
+    .article-tag {
+      background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25);
+      color: #3b82f6; border-radius: var(--radius-pill);
+      padding: 3px 12px; font-size: 0.75rem; font-weight: 600;
+    }
+    .article-hero h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 20px;
+    }
+    .article-hero .lead {
+      font-size: 1.05rem; color: var(--text-muted); line-height: 1.75;
+    }
+
+    .article-body {
+      max-width: 820px; margin: 0 auto; padding: 60px 20px 80px;
+    }
+    .article-body h2 {
+      font-size: 1.5rem; font-weight: 700; margin: 48px 0 18px; padding-top: 8px;
+    }
+    .article-body h3 {
+      font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px;
+      background: var(--accent); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .article-body p {
+      font-size: 0.98rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 18px 22px;
+    }
+    .article-body li {
+      font-size: 0.98rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.75;
+    }
+    .article-body a { color: #3b82f6; }
+    .article-body a:hover { text-decoration: underline; }
+
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;
+    }
+    .compare-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 20px;
+    }
+    .compare-card.stamp { border-color: rgba(59,130,246,0.2); }
+    .compare-card.reward { border-color: rgba(16,185,129,0.2); }
+    .compare-card h4 {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 10px;
+    }
+    .compare-card ul { margin-left: 16px; }
+    .compare-card li { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px; }
+
+    .highlight-box {
+      background: var(--bg-card); border: 1px solid rgba(59,130,246,0.2);
+      border-radius: var(--radius-lg); padding: 24px 28px; margin: 28px 0;
+    }
+    .highlight-box p { margin: 0; font-size: 0.95rem; }
+
+    .price-table {
+      width: 100%; border-collapse: collapse; margin: 20px 0;
+    }
+    .price-table th, .price-table td {
+      padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid var(--border); font-size: 0.9rem;
+    }
+    .price-table th {
+      color: var(--text-subtle); font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .price-table td { color: var(--text-muted); }
+    .price-table tr:last-child td { border-bottom: none; }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(16,185,129,0.08));
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: var(--radius-lg); padding: 36px;
+      text-align: center; margin: 48px 0;
+    }
+    .cta-box h3 {
+      font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;
+      background: none; -webkit-text-fill-color: var(--text);
+    }
+    .cta-box p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; }
+
+    footer {
+      padding: 60px 20px 32px; border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1.2fr; gap: 48px;
+      padding-bottom: 40px; margin-bottom: 24px; border-bottom: 1px solid var(--border);
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+    .footer-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+    .footer-contact { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px; }
+    .footer-wa {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+      padding: 9px 18px; background: rgba(37,211,102,0.1);
+      border: 1px solid rgba(37,211,102,0.25); border-radius: var(--radius-pill);
+      font-size: 0.85rem; font-weight: 600; color: #25d366; transition: background 0.2s;
+    }
+    .footer-wa:hover { background: rgba(37,211,102,0.18); }
+    .footer-col h4 {
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--text-subtle); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.88rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--text); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: var(--text-subtle); }
+    .footer-siret { font-size: 0.78rem; color: var(--text-subtle); }
+
+    @media (max-width: 1024px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-inner > *:first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">⭐ NOVEATHER</a>
+    <ul class="nav-links">
+      <li><a href="../#pricing">Tarifs</a></li>
+      <li><a href="../#how">Comment ça marche</a></li>
+      <li><a href="../#faq">FAQ</a></li>
+      <li><a href="../blog/">Blog</a></li>
+      <li>
+        <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
+           class="btn-gradient" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo</a>
+      </li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu de navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../#pricing">Tarifs</a>
+  <a href="../#how">Comment ça marche</a>
+  <a href="../#faq">FAQ</a>
+  <a href="../blog/">Blog</a>
+  <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
+     class="btn-gradient" style="text-align:center" aria-label="Réserver une démo gratuite">Réserver une démo</a>
+</div>
+
+<div class="article-hero">
+  <div class="article-meta">
+    <span class="article-tag">Restaurant</span>
+    <span>29 janvier 2025</span>
+    <span>7 min de lecture</span>
+  </div>
+  <h1>Fidélisation client pour restaurants en Guadeloupe : le guide complet</h1>
+  <p class="lead">Dans un restaurant, un client fidèle dépense en moyenne 67% de plus qu'un nouveau client. Pourtant, la plupart des restaurateurs guadeloupéens n'ont aucun système de fidélisation en place. Voici comment changer ça.</p>
+</div>
+
+<div class="article-body">
+
+  <h2>Pourquoi la fidélisation est cruciale pour les restaurants en Guadeloupe</h2>
+  <p>Le secteur de la restauration en Guadeloupe est dynamique mais concurrentiel. Entre les restaurants traditionnels créoles, les snacks, les food trucks et les nouvelles enseignes, vos clients ont l'embarras du choix. Dans ce contexte, comment vous assurer qu'ils reviennent chez vous plutôt que d'essayer la nouveauté d'à côté ?</p>
+  <p>La réponse, c'est la fidélisation. Non pas le classique carton de carte tampon qui se retrouve froissé au fond du portefeuille, mais un vrai programme de fidélité digital qui récompense automatiquement vos habitués et vous donne les outils pour les contacter directement.</p>
+  <p>Les chiffres parlent d'eux-mêmes :</p>
+  <ul>
+    <li>Un client fidèle visite votre restaurant <strong>3 fois plus souvent</strong> qu'un client occasionnel</li>
+    <li>Augmenter la rétention de vos clients de <strong>5% peut augmenter votre chiffre d'affaires de 25 à 95%</strong></li>
+    <li>Le <strong>coût d'acquisition d'un nouveau client</strong> est 5 à 7 fois supérieur au coût de fidélisation d'un client existant</li>
+  </ul>
+
+  <h2>Carte Reward vs Carte Tampon — que choisir pour votre restaurant ?</h2>
+  <p>Noveather propose deux types de programmes particulièrement adaptés aux restaurants :</p>
+
+  <div class="compare-grid">
+    <div class="compare-card stamp">
+      <h4>💳 Carte Tampon</h4>
+      <ul>
+        <li>10 repas = 1 offert</li>
+        <li>Simple et compréhensible</li>
+        <li>Idéal pour les snacks et plats du jour</li>
+        <li>Fort impact sur la fréquence</li>
+        <li>Recommandé pour : restaurants à ticket moyen stable</li>
+      </ul>
+    </div>
+    <div class="compare-card reward">
+      <h4>⭐ Carte Reward (Points)</h4>
+      <ul>
+        <li>Points à chaque euro dépensé</li>
+        <li>Récompenses modulables</li>
+        <li>S'adapte aux tickets variables</li>
+        <li>Encourage les commandes plus importantes</li>
+        <li>Recommandé pour : restaurants avec carte variée</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Pour la plupart des restaurants guadeloupéens, la <strong>Carte Tampon</strong> est le choix le plus simple à mettre en place et le plus facile à comprendre pour vos clients. La <strong>Carte Reward</strong> est plus puissante si vous souhaitez encourager des paniers plus élevés (entrée + plat + dessert + boisson).</p>
+
+  <div class="highlight-box">
+    <p>💡 <strong>Conseil pratique :</strong> Pour un restaurant avec un service du midi dominant, la carte tampon "10 déjeuners = 1 offert" est redoutablement efficace. Elle cible exactement vos clients réguliers du midi et les incite à ne jamais manquer leur déjeuner chez vous.</p>
+  </div>
+
+  <h2>Notifications push — remplissez vos tables le midi</h2>
+  <p>La vraie puissance du programme de fidélité digital pour un restaurant, c'est la capacité à envoyer des notifications push directement sur le téléphone de vos clients. Pas besoin qu'ils vérifient leurs emails ou voient une publicité sur les réseaux sociaux. La notification apparaît directement sur leur écran verrouillé.</p>
+  <p>Exemples concrets d'utilisation pour un restaurant :</p>
+  <ul>
+    <li><strong>11h45, notification géolocalisée</strong> (formule Pro) : "Spécial midi : gratin de christophines offert pour tout plat du jour commandé avant 12h30. Disponible aujourd'hui uniquement."</li>
+    <li><strong>Mardi matin</strong> : "Notre nouveau menu créole de la semaine est disponible ! Colombo de poulet, acras maison, et dessert glacé à la passion. Venez-nous voir !"</li>
+    <li><strong>Après 7 jours d'absence</strong> (automatique) : "On ne vous a pas vu depuis une semaine ! Revenez cette semaine et votre dessert est offert."</li>
+    <li><strong>Veille du week-end</strong> : "Réservez votre table pour ce samedi soir — notre menu spécial Guadeloupe est complet les semaines passées. Appelez le +590 691 27 54 57."</li>
+  </ul>
+  <p>Ces messages ne coûtent rien à envoyer et arrivent directement dans la poche de vos clients. C'est le canal de communication le plus direct qui existe aujourd'hui pour un restaurant.</p>
+
+  <h2>Programme de parrainage pour restaurants</h2>
+  <p>En Guadeloupe, le bouche-à-oreille est roi. Les recommandations entre amis, familles et collègues sont la première source de nouveaux clients pour les restaurants locaux. Le programme de parrainage Noveather transforme cette dynamique naturelle en système automatisé.</p>
+  <p>Comment ça fonctionne pour votre restaurant :</p>
+  <ol>
+    <li>Votre client habituel du midi partage son lien de parrainage avec ses collègues de bureau</li>
+    <li>Chaque collègue qui scanne via ce lien reçoit une réduction de bienvenue : "-15% sur le premier repas"</li>
+    <li>Le parrain reçoit automatiquement 2 points bonus sur sa carte fidélité</li>
+    <li>Résultat : une table de 4 collègues à la place d'un seul client habituel</li>
+  </ol>
+  <p>Dans un contexte professionnel comme Les Abymes ou Pointe-à-Pitre, où les pauses déjeuner en groupe sont courantes, ce mécanisme peut multiplier rapidement votre base de clients fidèles.</p>
+
+  <h2>Statistiques : savoir quand vos clients viennent</h2>
+  <p>L'un des avantages les moins visibles mais les plus puissants d'un programme de fidélité digital, c'est la data. Avec Noveather, vous disposez d'un tableau de bord en temps réel qui vous indique :</p>
+  <ul>
+    <li><strong>Combien de clients actifs</strong> vous avez (porteurs de carte qui sont venus au moins une fois dans les 30 derniers jours)</li>
+    <li><strong>Les jours et horaires les plus fréquentés</strong> — pour optimiser votre staffing et vos approvisionnements</li>
+    <li><strong>La fréquence moyenne de visite</strong> — si la moyenne passe de 3 à 4 visites par mois, votre programme fonctionne</li>
+    <li><strong>Les clients à risque de départ</strong> — ceux qui n'ont pas visité depuis X jours, pour leur envoyer un message de réactivation</li>
+    <li><strong>L'efficacité de vos campagnes push</strong> — combien de clients sont venus suite à une notification</li>
+  </ul>
+  <p>Ces informations vous permettent de prendre des décisions basées sur des faits réels, et non sur des intuitions. C'est un avantage concurrentiel majeur que n'ont pas les restaurants qui font encore de la carte tampon papier.</p>
+
+  <h2>Combien ça coûte pour un restaurant ?</h2>
+  <p>Pour un restaurant en Guadeloupe, voici nos recommandations :</p>
+
+  <table class="price-table">
+    <thead>
+      <tr><th>Formule</th><th>Mensuel</th><th>Annuel</th><th>Installation</th><th>Recommandé pour</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Starter</strong></td>
+        <td>89€/mois</td>
+        <td>890€/an</td>
+        <td>99€</td>
+        <td>Snack, restaurant simple</td>
+      </tr>
+      <tr>
+        <td><strong>Pro</strong></td>
+        <td>129€/mois</td>
+        <td>1 290€/an</td>
+        <td>169€</td>
+        <td>Restaurant avec service midi &amp; soir</td>
+      </tr>
+      <tr>
+        <td><strong>Business</strong></td>
+        <td>219€/mois</td>
+        <td>2 190€/an</td>
+        <td>249€</td>
+        <td>Plusieurs adresses ou franchise</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Pour un restaurant réalisant un chiffre d'affaires de 15 000€/mois, fidéliser 20% de clients supplémentaires représente 3 000€ de CA mensuel en plus. Le retour sur investissement d'un abonnement à 89 ou 129€/mois est évident.</p>
+
+  <h2>Conclusion</h2>
+  <p>La fidélisation dans la restauration en Guadeloupe n'est plus un luxe réservé aux chaînes nationales avec des budgets marketing importants. Avec Noveather, un restaurateur indépendant peut proposer une expérience de fidélité aussi moderne et efficace que les grandes enseignes — pour moins de 5€ par jour.</p>
+  <p>La prochaine fois qu'un client paye son addition, imaginez pouvoir lui envoyer une notification le lundi suivant pour lui rappeler que le spécial du midi l'attend. C'est exactement ce que Noveather vous permet de faire — de manière automatique, ciblée, et mesurable.</p>
+
+  <div class="cta-box">
+    <h3>Prêt à remplir vos tables plus souvent ?</h3>
+    <p>Réservez une démo gratuite. En 30 minutes, on vous montre comment mettre en place votre programme de fidélité et on le configure ensemble.</p>
+    <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
+       class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo gratuite →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">⭐ NOVEATHER</div>
+      <p class="footer-desc">Solution de cartes de fidélité digitales pour commerçants en Guadeloupe.</p>
+      <p class="footer-contact">contact@noveather.fr</p>
+      <p class="footer-contact">+590 691 27 54 57</p>
+      <a href="https://wa.me/message/RXQRCEI6D6PIH1" target="_blank" rel="noopener"
+         class="footer-wa" aria-label="Contacter Noveather sur WhatsApp">💬 WhatsApp</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="../#pricing">Tarifs</a></li>
+        <li><a href="../#how">Comment ça marche</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener">Réserver une démo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="../mentions-legales#mentions">Mentions légales</a></li>
+        <li><a href="../mentions-legales#cgv">CGV</a></li>
+        <li><a href="../mentions-legales#rgpd">RGPD</a></li>
+      </ul>
+      <p class="footer-siret" style="margin-top:16px">SIRET : 934 277 633 00012</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Noveather EI — Guadeloupe</p>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
