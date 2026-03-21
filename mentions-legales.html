@@ -17,7 +17,7 @@
       --border: rgba(255,255,255,0.07);
       --border-hover: rgba(255,255,255,0.15);
       --text: #ffffff;
-      --text-muted: rgba(255,255,255,0.55);
+      --text-muted: rgba(255,255,255,0.7);
       --text-subtle: rgba(255,255,255,0.35);
       --accent-start: #3b82f6;
       --accent-end: #10b981;
@@ -36,6 +36,17 @@
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
+    .skip-link {
+      position: absolute; top: -100px; left: 0; z-index: 9999;
+      background: #3b82f6; color: #fff; padding: 10px 20px;
+      font-weight: 600; font-size: 0.9rem;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+    :focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 3px;
+    }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -212,7 +223,9 @@
 </head>
 <body>
 
-<nav id="navbar">
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+<nav id="navbar" aria-label="Navigation principale">
   <div class="nav-inner">
     <a href="/" class="nav-logo">⭐ NOVEATHER</a>
     <ul class="nav-links">
@@ -239,6 +252,8 @@
   <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
      class="btn-gradient" style="text-align:center" aria-label="Réserver une démo gratuite">Réserver une démo</a>
 </div>
+
+<main id="main-content">
 
 <div class="page-hero">
   <h1>Mentions légales, CGV &amp; RGPD</h1>
@@ -345,7 +360,9 @@
 
 </div>
 
-<footer>
+</main>
+
+<footer role="contentinfo">
   <div class="footer-inner">
     <div>
       <div class="footer-logo">⭐ NOVEATHER</div>
