@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales, CGV et RGPD — Noveather</title>
+  <meta name="description" content="Mentions légales, conditions générales de vente et politique de confidentialité RGPD de Noveather — solution de fidélité digitale pour commerçants en Guadeloupe.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d14;
+      --bg-card: rgba(255,255,255,0.03);
+      --bg-card-hover: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.15);
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.55);
+      --text-subtle: rgba(255,255,255,0.35);
+      --accent-start: #3b82f6;
+      --accent-end: #10b981;
+      --accent: linear-gradient(90deg, #3b82f6, #10b981);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-pill: 100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 20px;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: var(--bg);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav-links a { font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-gradient {
+      background: var(--accent); color: #fff; border-radius: var(--radius-pill);
+      padding: 10px 22px; font-weight: 600; font-size: 0.88rem;
+      border: none; cursor: pointer; display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--accent); color: #fff; border-radius: var(--radius-pill);
+      padding: 13px 28px; font-weight: 600; font-size: 0.95rem;
+      border: none; cursor: pointer; display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 24px 20px; z-index: 99; flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; color: var(--text-muted); padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:hover { color: var(--text); }
+
+    .page-hero {
+      padding: 140px 20px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-size: 2.4rem; font-weight: 800; margin-bottom: 16px;
+    }
+    .page-hero p { font-size: 1rem; color: var(--text-muted); }
+
+    .legal-nav {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+    }
+    .legal-nav a {
+      padding: 8px 18px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-pill); font-size: 0.88rem;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .legal-nav a:hover {
+      border-color: var(--border-hover); color: var(--text);
+    }
+
+    .legal-content {
+      max-width: 820px; margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+    .legal-section {
+      margin-bottom: 64px; scroll-margin-top: 100px;
+    }
+    .legal-section h2 {
+      font-size: 1.6rem; font-weight: 700; margin-bottom: 28px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border);
+    }
+    .legal-section h3 {
+      font-size: 1.05rem; font-weight: 700; margin: 28px 0 10px;
+      color: #3b82f6;
+    }
+    .legal-section p {
+      font-size: 0.95rem; color: var(--text-muted);
+      margin-bottom: 14px; line-height: 1.75;
+    }
+    .legal-section ul {
+      margin: 0 0 14px 20px;
+    }
+    .legal-section ul li {
+      font-size: 0.95rem; color: var(--text-muted);
+      margin-bottom: 8px; line-height: 1.7;
+    }
+    .legal-section a { color: #3b82f6; }
+    .legal-section a:hover { text-decoration: underline; }
+    .info-table {
+      width: 100%; border-collapse: collapse; margin-bottom: 20px;
+    }
+    .info-table td {
+      padding: 10px 14px; font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-table td:first-child {
+      color: var(--text-subtle); width: 200px; font-weight: 500;
+    }
+    .info-table td:last-child { color: var(--text-muted); }
+
+    footer {
+      padding: 60px 20px 32px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1.2fr; gap: 48px;
+      padding-bottom: 40px; margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+    .footer-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+    .footer-contact { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 6px; }
+    .footer-wa {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 14px; padding: 9px 18px;
+      background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25);
+      border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600;
+      color: #25d366; transition: background 0.2s;
+    }
+    .footer-wa:hover { background: rgba(37,211,102,0.18); }
+    .footer-col h4 {
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--text-subtle); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.88rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--text); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: var(--text-subtle); }
+    .footer-siret { font-size: 0.78rem; color: var(--text-subtle); }
+
+    @media (max-width: 1024px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-inner > *:first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">⭐ NOVEATHER</a>
+    <ul class="nav-links">
+      <li><a href="/#pricing">Tarifs</a></li>
+      <li><a href="/#how">Comment ça marche</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li>
+        <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
+           class="btn-gradient" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo</a>
+      </li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu de navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#pricing">Tarifs</a>
+  <a href="/#how">Comment ça marche</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/blog/">Blog</a>
+  <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
+     class="btn-gradient" style="text-align:center" aria-label="Réserver une démo gratuite">Réserver une démo</a>
+</div>
+
+<div class="page-hero">
+  <h1>Mentions légales, CGV &amp; RGPD</h1>
+  <p>Informations légales, conditions générales de vente et politique de confidentialité de Noveather</p>
+</div>
+
+<nav class="legal-nav" aria-label="Navigation dans les mentions légales">
+  <a href="#mentions">Mentions légales</a>
+  <a href="#cgv">CGV</a>
+  <a href="#rgpd">RGPD</a>
+</nav>
+
+<div class="legal-content">
+
+  <!-- MENTIONS LÉGALES -->
+  <div class="legal-section" id="mentions">
+    <h2>Mentions légales</h2>
+
+    <table class="info-table">
+      <tr><td>Nom de l'entreprise</td><td>Noveather EI</td></tr>
+      <tr><td>SIRET</td><td>934 277 633 00012</td></tr>
+      <tr><td>Adresse</td><td>Route de Bourgueil, Palmiste, Sainte-Anne, Guadeloupe (971), France</td></tr>
+      <tr><td>Email</td><td><a href="mailto:contact@noveather.fr">contact@noveather.fr</a></td></tr>
+      <tr><td>Téléphone</td><td>+590 691 27 54 57</td></tr>
+      <tr><td>Responsable de publication</td><td>Le Juez Mathis</td></tr>
+    </table>
+
+    <h3>Hébergement</h3>
+    <p>Ce site est hébergé par :<br>
+    Netlify, Inc.<br>
+    512 2nd Street, Suite 200<br>
+    San Francisco, CA 94107, États-Unis</p>
+  </div>
+
+  <!-- CGV -->
+  <div class="legal-section" id="cgv">
+    <h2>Conditions Générales de Vente</h2>
+
+    <h3>1. Description des services</h3>
+    <p>Noveather propose des solutions de cartes de fidélité digitales pour commerçants en Guadeloupe. Ces solutions permettent aux commerçants de créer et gérer des programmes de fidélité compatibles Apple Wallet et Google Wallet, accessibles sans application à télécharger pour les clients finaux.</p>
+
+    <h3>2. Modalités de paiement</h3>
+    <p>Les services Noveather sont commercialisés sous forme d'abonnements mensuels ou annuels, auxquels s'ajoutent des frais d'installation uniques à la souscription. Le paiement est effectué par carte bancaire via la plateforme sécurisée Stripe.</p>
+
+    <h3>3. Abonnement</h3>
+    <p>Les formules mensuelles sont sans engagement et renouvelées automatiquement chaque mois. Les formules annuelles impliquent un engagement de 12 mois et sont renouvelées automatiquement, sauf résiliation dans les conditions prévues ci-dessous. Le renouvellement automatique peut être désactivé à tout moment en respectant le préavis de résiliation.</p>
+
+    <h3>4. Résiliation</h3>
+    <p>La résiliation est effectuée par email adressé à <a href="mailto:contact@noveather.fr">contact@noveather.fr</a> avec un préavis de 30 jours. Aucun remboursement n'est accordé pour la période d'abonnement déjà facturée. Les frais d'installation sont non remboursables. En cas de résiliation, le commerçant dispose de 30 jours pour exporter ses données clients.</p>
+
+    <h3>5. Limitation de responsabilité</h3>
+    <p>La responsabilité de Noveather EI est limitée aux dommages directs causés par une défaillance prouvée du service, dans la limite de 3 mois d'abonnement. Noveather ne saurait être tenue responsable des interruptions de service dues à des maintenances, des tiers (opérateurs, hébergeurs) ou des cas de force majeure.</p>
+
+    <h3>6. Droit applicable</h3>
+    <p>Les présentes conditions générales de vente sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, le tribunal compétent sera celui de la juridiction de Guadeloupe.</p>
+  </div>
+
+  <!-- RGPD -->
+  <div class="legal-section" id="rgpd">
+    <h2>Politique de confidentialité — RGPD</h2>
+
+    <h3>1. Données collectées</h3>
+    <p>Dans le cadre de l'utilisation du programme de fidélité Noveather, les données suivantes peuvent être collectées :</p>
+    <ul>
+      <li>Nom et prénom</li>
+      <li>Adresse email</li>
+      <li>Numéro de téléphone</li>
+      <li>Historique des visites et récompenses</li>
+      <li>Données de géolocalisation (uniquement avec consentement explicite et préalable)</li>
+    </ul>
+
+    <h3>2. Finalités du traitement</h3>
+    <ul>
+      <li>Gestion du programme de fidélité</li>
+      <li>Envoi de communications marketing consenties (notifications push, SMS)</li>
+      <li>Établissement de statistiques d'usage anonymisées</li>
+      <li>Facturation et gestion de l'abonnement commerçant</li>
+    </ul>
+
+    <h3>3. Base légale</h3>
+    <p>Le traitement des données repose sur le consentement explicite de la personne concernée lors de l'inscription au programme de fidélité, et sur l'exécution du contrat d'abonnement pour les données commerçant.</p>
+
+    <h3>4. Responsabilités B2B — DPA</h3>
+    <p>Noveather agit en qualité de sous-traitant au sens de l'article 4(8) du Règlement Général sur la Protection des Données (RGPD). Le commerçant abonné est le responsable de traitement pour les données de ses clients finaux. À ce titre, le commerçant s'engage à respecter la réglementation applicable en matière de protection des données personnelles vis-à-vis de ses propres clients.</p>
+
+    <h3>5. Restitution des données</h3>
+    <p>À la résiliation du contrat, le commerçant dispose de 30 jours pour demander un export complet de ses données (format CSV ou Excel) en adressant une demande à <a href="mailto:contact@noveather.fr">contact@noveather.fr</a>. Passé ce délai, les données seront supprimées.</p>
+
+    <h3>6. Sécurité</h3>
+    <p>Noveather met en œuvre les mesures techniques et organisationnelles appropriées pour assurer la sécurité des données : chiffrement TLS pour les transferts, sauvegardes régulières, accès restreint aux données sur le principe du moindre privilège.</p>
+
+    <h3>7. Durée de conservation</h3>
+    <p>Les données sont conservées pendant toute la durée d'activité du programme de fidélité, puis supprimées dans les 30 jours suivant la résiliation du contrat, sauf demande d'export préalable.</p>
+
+    <h3>8. Droits des personnes concernées</h3>
+    <p>Conformément aux articles 15 à 22 du RGPD, toute personne dispose des droits suivants : accès, rectification, effacement, portabilité, opposition et limitation du traitement. Les demandes peuvent être adressées à <a href="mailto:contact@noveather.fr">contact@noveather.fr</a> et seront traitées dans un délai d'un mois.</p>
+
+    <h3>9. Cookies</h3>
+    <p>Ce site utilise uniquement des cookies strictement nécessaires à son fonctionnement. Aucun cookie publicitaire ou de traçage n'est déposé sans votre consentement explicite.</p>
+
+    <h3>10. Réclamation</h3>
+    <p>Si vous estimez que le traitement de vos données ne respecte pas la réglementation, vous pouvez introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) à l'adresse <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">⭐ NOVEATHER</div>
+      <p class="footer-desc">Solution de cartes de fidélité digitales pour commerçants en Guadeloupe.</p>
+      <p class="footer-contact">contact@noveather.fr</p>
+      <p class="footer-contact">+590 691 27 54 57</p>
+      <a href="https://wa.me/message/RXQRCEI6D6PIH1" target="_blank" rel="noopener"
+         class="footer-wa" aria-label="Contacter Noveather sur WhatsApp">💬 WhatsApp</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="/#pricing">Tarifs</a></li>
+        <li><a href="/#how">Comment ça marche</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener">Réserver une démo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="/mentions-legales#mentions">Mentions légales</a></li>
+        <li><a href="/mentions-legales#cgv">CGV</a></li>
+        <li><a href="/mentions-legales#rgpd">RGPD</a></li>
+      </ul>
+      <p class="footer-siret" style="margin-top:16px">SIRET : 934 277 633 00012</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Noveather EI — Guadeloupe</p>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
