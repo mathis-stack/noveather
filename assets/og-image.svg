@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d1b2e"/>
+      <stop offset="100%" stop-color="#080d14"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="starG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a832"/>
+      <stop offset="50%" stop-color="#b8972a"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <!-- Accent stripe top -->
+  <rect width="1200" height="6" fill="url(#accentGrad)"/>
+  <!-- Star logo centered -->
+  <g transform="translate(530, 180) scale(5)">
+    <polygon points="14,2 17,11 27,11 19.5,16.5 22,26 14,20.5 6,26 8.5,16.5 1,11 11,11"
+      fill="url(#starG)" stroke="#b8972a" stroke-width="0.5"/>
+  </g>
+  <!-- "Noveather" text with "ea" in gold -->
+  <text x="600" y="430" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="72" text-anchor="middle" letter-spacing="-1">
+    <tspan fill="#1a2744">Nov</tspan><tspan fill="#b8972a">ea</tspan><tspan fill="#1a2744">ther</tspan>
+  </text>
+  <!-- Subtitle -->
+  <text x="600" y="502" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="26" fill="#94a3b8" text-anchor="middle">Carte de fidélité digitale pour commerçants en Guadeloupe</text>
+</svg>
