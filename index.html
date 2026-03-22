@@ -27,7 +27,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#080d14">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet">
   <!-- Google Search Console verification: remplacer par votre balise meta de vérification -->
@@ -775,7 +776,7 @@
       <li><a href="/blog/">Blog</a></li>
       <li>
         <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
-           class="btn-gradient" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo</a>
+           class="btn-gradient" aria-label="Réserver une démo gratuite sur Calendly" data-cta="nav_demo">Réserver une démo</a>
       </li>
     </ul>
     <button class="burger" id="burger" aria-label="Ouvrir le menu de navigation">
@@ -804,8 +805,8 @@
     <p>Noveather remplace vos cartes tampon en papier par une carte de fidélité digitale directement dans le téléphone de vos clients. Compatible Apple Wallet et Google Wallet. Sans application à télécharger. Configurée sous 48 à 72h ouvrées.</p>
     <div class="hero-btns">
       <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
-         class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo gratuite</a>
-      <a href="#pricing" class="btn-outline" aria-label="Voir les tarifs Noveather">Voir les tarifs</a>
+         class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly" data-cta="hero_demo">Réserver une démo gratuite</a>
+      <a href="#pricing" class="btn-outline" aria-label="Voir les tarifs Noveather" data-cta="hero_pricing">Voir les tarifs</a>
     </div>
     <div class="hero-badges">
       <span class="hero-tag">🍎 Apple Wallet</span>
@@ -850,7 +851,7 @@
     </div>
     <div class="comparison-center">
       <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
-         class="btn-primary" aria-label="Passer au digital dès aujourd'hui">Passer au digital dès aujourd'hui</a>
+         class="btn-primary" aria-label="Passer au digital dès aujourd'hui" data-cta="comparison_cta">Passer au digital dès aujourd'hui</a>
     </div>
   </div>
 </section>
@@ -940,6 +941,12 @@
       <p>Sans engagement mensuel. Résiliable à tout moment avec 30 jours de préavis. 2 mois offerts en engagement annuel.</p>
     </div>
 
+    <div style="text-align:center;margin-bottom:32px;">
+      <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:100px;padding:8px 20px;font-size:0.88rem;font-weight:600;color:#ef4444;">
+        🔥 Prix de lancement — Offre réservée aux premiers commerçants en Guadeloupe
+      </span>
+    </div>
+
     <div class="pricing-toggle">
       <span class="toggle-label active" id="label-monthly">Mensuel</span>
       <button class="toggle-btn" id="billingToggle" role="switch" aria-checked="false" aria-label="Basculer entre facturation mensuelle et annuelle"></button>
@@ -969,7 +976,7 @@
            href="https://buy.stripe.com/14A14nbFs3L39fMf2q7Zu02"
            target="_blank" rel="noopener"
            class="btn-primary" style="width:100%;text-align:center;display:block"
-           aria-label="Commencer avec le plan Starter">Commencer avec Starter →</a>
+           aria-label="Commencer avec le plan Starter" data-cta="pricing_starter">Commencer avec Starter →</a>
       </div>
 
       <!-- PRO -->
@@ -993,7 +1000,7 @@
            href="https://buy.stripe.com/14A14n8tg5TbbnU2fE7Zu04"
            target="_blank" rel="noopener"
            class="btn-primary" style="width:100%;text-align:center;display:block"
-           aria-label="Commencer avec le plan Pro">Commencer avec Pro →</a>
+           aria-label="Commencer avec le plan Pro" data-cta="pricing_pro">Commencer avec Pro →</a>
       </div>
 
       <!-- BUSINESS -->
@@ -1019,7 +1026,7 @@
            href="https://buy.stripe.com/fZu3cvdNA3L34Zw6vU7Zu06"
            target="_blank" rel="noopener"
            class="btn-primary" style="width:100%;text-align:center;display:block"
-           aria-label="Commencer avec le plan Business">Commencer avec Business →</a>
+           aria-label="Commencer avec le plan Business" data-cta="pricing_business">Commencer avec Business →</a>
       </div>
     </div>
 
@@ -1188,7 +1195,7 @@
     <p>Rejoignez les commerçants guadeloupéens qui modernisent leur programme de fidélité avec Noveather. Configuré sous 48-72h, sans engagement.</p>
     <div class="cta-btns">
       <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
-         class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo gratuite</a>
+         class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly" data-cta="final_demo">Réserver une démo gratuite</a>
       <a href="#pricing" class="btn-outline" aria-label="Voir les tarifs Noveather">Voir les tarifs</a>
     </div>
     <p class="cta-note">✓ Sans engagement &nbsp;·&nbsp; ✓ Configuré sous 48-72h &nbsp;·&nbsp; ✓ Support inclus</p>
@@ -1314,6 +1321,18 @@
     isAnnual = !isAnnual;
     toggle.setAttribute('aria-checked', isAnnual ? 'true' : 'false');
     updatePricing();
+  });
+
+  // Tracking CTA clicks
+  document.querySelectorAll('[data-cta]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'click_cta', {
+          'event_category': 'engagement',
+          'event_label': el.getAttribute('data-cta')
+        });
+      }
+    });
   });
 </script>
 </body>

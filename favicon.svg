@@ -1,10 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="Noveather">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#d4a832"/>
-      <stop offset="100%" stop-color="#b8972a"/>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2744"/>
+      <stop offset="50%" style="stop-color:#7a8fb0"/>
+      <stop offset="100%" style="stop-color:#d4af37"/>
     </linearGradient>
   </defs>
-  <polygon points="16,2 19.5,12 30,12 21.5,18.5 24.5,29 16,22.5 7.5,29 10.5,18.5 2,12 12.5,12"
-    fill="url(#fg)" stroke="#b8972a" stroke-width="0.5"/>
+  <!-- Étoile extérieure -->
+  <polygon points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35"
+    fill="none" stroke="url(#starGrad)" stroke-width="2.5"/>
+  <!-- Étoile milieu -->
+  <polygon points="50,12 59,37 90,37 66,55 75,86 50,67 25,86 34,55 10,37 41,37"
+    fill="none" stroke="url(#starGrad)" stroke-width="1.8" opacity="0.7"/>
+  <!-- Étoile intérieure -->
+  <polygon points="50,19 57,39 85,39 64,53 71,81 50,64 29,81 36,53 15,39 43,39"
+    fill="none" stroke="url(#starGrad)" stroke-width="1.2" opacity="0.5"/>
+  <!-- Trait diagonal -->
+  <line x1="68" y1="8" x2="32" y2="92" stroke="#8a9ab5" stroke-width="1.5" opacity="0.6"/>
 </svg>
