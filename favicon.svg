@@ -1,12 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="navy-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2d3f6b"/>
-      <stop offset="100%" stop-color="#1a2744"/>
-    </linearGradient>
-    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#d4af37"/>
-      <stop offset="100%" stop-color="#b8972a"/>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="45%" stop-color="#5a6e9a"/>
+      <stop offset="100%" stop-color="#d4af37"/>
     </linearGradient>
     <clipPath id="clip-left">
       <polygon points="0,0 50,0 50,100 0,100"/>
@@ -15,18 +12,11 @@
       <polygon points="50,0 100,0 100,100 50,100"/>
     </clipPath>
   </defs>
-  <!-- Triple contour (outermost) -->
-  <polygon points="50,2 62.5,34.5 96,34.5 69,54 79.5,86.5 50,67.5 20.5,86.5 31,54 4,34.5 37.5,34.5"
-    fill="none" stroke="#1a2744" stroke-width="2.5" stroke-linejoin="round" opacity="0.25"/>
-  <!-- Triple contour (middle) -->
-  <polygon points="50,4 62,35.5 93,35.5 67.5,54.5 77.5,85.5 50,67 22.5,85.5 32.5,54.5 7,35.5 38,35.5"
-    fill="none" stroke="#1a2744" stroke-width="2" stroke-linejoin="round" opacity="0.45"/>
-  <!-- Star left half (navy) -->
-  <polygon points="50,6 61.5,36.5 90,36.5 66,54.5 75.5,85 50,66.5 24.5,85 34,54.5 10,36.5 38.5,36.5"
-    fill="url(#navy-grad)" clip-path="url(#clip-left)"/>
-  <!-- Star right half (gold) -->
-  <polygon points="50,6 61.5,36.5 90,36.5 66,54.5 75.5,85 50,66.5 24.5,85 34,54.5 10,36.5 38.5,36.5"
-    fill="url(#gold-grad)" clip-path="url(#clip-right)"/>
-  <!-- Diagonal line top-right to bottom-left -->
-  <line x1="78" y1="14" x2="22" y2="86" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+  <polygon points="50,4 62,34 95,34 69,53 79,88 50,68 21,88 31,53 5,34 38,34"
+    fill="none" stroke="url(#g1)" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="50,11 60,37 91,37 67,54 76,86 50,67 24,86 33,54 9,37 40,37"
+    fill="none" stroke="url(#g1)" stroke-width="1.8" stroke-linejoin="round" opacity="0.75"/>
+  <polygon points="50,18 58,40 87,40 65,55 73,84 50,66 27,84 35,55 13,40 42,40"
+    fill="none" stroke="url(#g1)" stroke-width="1.2" stroke-linejoin="round" opacity="0.5"/>
+  <line x1="70" y1="6" x2="30" y2="94" stroke="#8a9ab5" stroke-width="1.5" opacity="0.55"/>
 </svg>
