@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Choisir votre carte — Noveather</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F6F0;color:#1B2B5B;min-height:100vh;padding-bottom:40px}
+
+/* HEADER */
+.header{background:#1B2B5B;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header-logo{font-size:18px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.header-logo span{color:#C9A84C}
+.header-sub{font-size:11px;color:rgba(255,255,255,0.6)}
+
+/* TABS */
+.tabs{display:flex;background:#fff;border-bottom:1px solid #E8E6E0;position:sticky;top:57px;z-index:99}
+.tab{flex:1;padding:12px 8px;font-size:12px;font-weight:600;text-align:center;color:#888;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.tab.on{color:#1B2B5B;border-bottom-color:#C9A84C}
+
+/* VIEWS */
+.view{display:none;padding:16px}
+.view.on{display:block}
+
+/* ───── VERSION CLIENT ───── */
+.intro{background:#EEF1F8;border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#1B2B5B}
+.intro strong{font-weight:600}
+
+.card{background:#fff;border-radius:14px;border:1px solid #E8E6E0;margin-bottom:12px;overflow:hidden}
+.card-head{padding:14px 16px;border-bottom:1px solid #E8E6E0;display:flex;align-items:center;gap:12px}
+.card-ico{width:36px;height:36px;border-radius:50%;background:#EEF1F8;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.card-info{}
+.card-t{font-size:14px;font-weight:600;color:#1B2B5B}
+.card-st{font-size:11px;color:#888;margin-top:1px}
+.card-body{padding:14px 16px}
+.card-ex{font-size:13px;color:#444;line-height:1.65;margin-bottom:10px}
+.card-ex strong{color:#1B2B5B;font-weight:600}
+.card-badge{display:inline-block;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
+.b-blue{background:#dbeafe;color:#1d4ed8}
+.b-green{background:#dcfce7;color:#15803d}
+.b-purple{background:#f3e8ff;color:#7e22ce}
+.b-orange{background:#fef3c7;color:#92400e}
+.b-red{background:#fee2e2;color:#991b1b}
+.warn{margin-top:10px;padding:8px 12px;background:#fffbeb;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;font-size:11px;color:#92400e;line-height:1.5}
+
+/* ───── VERSION TERRAIN ───── */
+.terrain-intro{background:#fff;border-radius:14px;border:1px solid #E8E6E0;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#444;line-height:1.6}
+.terrain-intro strong{color:#1B2B5B;font-weight:600}
+
+.qcard{background:#fff;border-radius:14px;border:1px solid #E8E6E0;margin-bottom:12px;overflow:hidden;transition:opacity .3s}
+.qcard.locked{opacity:0.4;pointer-events:none}
+.qcard-head{padding:14px 16px;border-bottom:1px solid #E8E6E0}
+.q-step{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#C9A84C;margin-bottom:4px}
+.q-text{font-size:15px;font-weight:600;color:#1B2B5B}
+
+.opts{padding:8px}
+.opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:10px;border:1px solid #E8E6E0;background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s}
+.opt:last-child{margin-bottom:0}
+.opt.sel{border-color:#1B2B5B;background:#EEF1F8}
+.opt-t{font-size:13px;font-weight:600;color:#1B2B5B}
+.opt-s{font-size:12px;color:#888;margin-top:2px;line-height:1.4}
+.opt.sel .opt-s{color:#2E4080}
+
+/* RESULT */
+.result{border-radius:14px;border:2px solid #1B2B5B;background:#EEF1F8;padding:18px;margin-top:4px;display:none}
+.result.show{display:block}
+.result-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#C9A84C;margin-bottom:8px}
+.result-name{font-size:22px;font-weight:700;color:#1B2B5B;margin-bottom:12px}
+.result-body{font-size:14px;color:#2E4080;line-height:1.75;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #B5C4D8}
+.result-note{font-size:12px;color:#666;line-height:1.6;margin-bottom:16px}
+.btn-reset{width:100%;padding:12px;border-radius:10px;border:1.5px solid #1B2B5B;background:#fff;color:#1B2B5B;font-size:14px;font-weight:600;cursor:pointer}
+.btn-reset:active{background:#EEF1F8}
+
+/* FOOTER */
+.footer{text-align:center;padding:24px 16px 8px;font-size:11px;color:#aaa}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-logo">NOVE<span>A</span>THER</div>
+    <div class="header-sub">Guide de choix de carte</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab on" onclick="setTab('client')">Pour le client</button>
+  <button class="tab" onclick="setTab('terrain')">Aide au choix</button>
+</div>
+
+<!-- ════ VIEW CLIENT ════ -->
+<div class="view on" id="view-client">
+  <div class="intro">
+    <strong>Quelle carte choisir ?</strong><br>
+    Voici les 8 options disponibles. Choisissez celle qui correspond à votre activité. Si vous hésitez, utilisez l'onglet "Aide au choix".
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">★</div>
+      <div class="card-info">
+        <div class="card-t">Carte Tampon</div>
+        <div class="card-st">La plus simple et la plus populaire</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Votre client accumule des tampons à chaque visite. Quand il atteint le nombre défini, il reçoit automatiquement sa récompense sur son téléphone.<br><br><strong>Exemple :</strong> "10 coupes = la 11ème offerte"</div>
+      <span class="card-badge b-blue">Idéal : coiffure, café, restaurant</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">%</div>
+      <div class="card-info">
+        <div class="card-t">Carte Cashback</div>
+        <div class="card-st">Récompense les gros acheteurs</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Votre client gagne un % de chaque achat en points. Quand il a assez de points, il les échange contre une réduction.<br><br><strong>Exemple :</strong> "5% de chaque achat — 5€ offerts tous les 100€ dépensés"</div>
+      <span class="card-badge b-green">Idéal : épicerie, spa, boutique</span>
+      <div class="warn">Votre personnel devra saisir le montant de chaque achat dans l'appli.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">♦</div>
+      <div class="card-info">
+        <div class="card-t">Carte Membership</div>
+        <div class="card-st">Créez un club VIP exclusif</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Votre client a un statut VIP (Silver, Gold, Platinum) avec des avantages exclusifs à chaque niveau. Sa carte change visuellement quand il monte de niveau.<br><br><strong>Exemple :</strong> "Silver : -10% · Gold : -15% · Platinum : accès prioritaire"</div>
+      <span class="card-badge b-purple">Idéal : salle de sport, épicerie fine, club</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">♡</div>
+      <div class="card-info">
+        <div class="card-t">Carte Cadeau</div>
+        <div class="card-st">Solde en euros dans le téléphone</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Un client achète une carte cadeau pour offrir. Le bénéficiaire l'utilise directement dans votre commerce.<br><br><strong>Exemple :</strong> "Carte cadeau 50€ — valable 1 an"</div>
+      <span class="card-badge b-blue">Idéal : salon beauté, restaurant, boutique</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">▣</div>
+      <div class="card-info">
+        <div class="card-t">Carte Multipass</div>
+        <div class="card-st">Carnet de séances prépayées</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Votre client achète un carnet de séances à l'avance à prix réduit. Chaque visite décompte automatiquement une séance.<br><br><strong>Exemple :</strong> "10 massages au prix de 9 — valable 6 mois"</div>
+      <span class="card-badge b-green">Idéal : massage, coiffure, yoga, sport</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">✂</div>
+      <div class="card-info">
+        <div class="card-t">Carte Coupon</div>
+        <div class="card-st">Réduction à usage unique</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Vous distribuez un coupon de réduction utilisable une seule fois. Parfait pour attirer de nouveaux clients.<br><br><strong>Exemple :</strong> "-15% sur la 1ère visite" partagé sur Instagram</div>
+      <span class="card-badge b-red">Idéal : acquisition nouveaux clients</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">↓</div>
+      <div class="card-info">
+        <div class="card-t">Carte Discount</div>
+        <div class="card-st">Réduction permanente ou progressive</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Votre client bénéficie d'une réduction automatique à chaque achat — fixe ou qui augmente selon son historique.<br><br><strong>Exemple :</strong> "0-100€ cumulés : -5% · +100€ : -10% · +300€ : -15%"</div>
+      <span class="card-badge b-orange">Idéal : épicerie, prêt-à-porter</span>
+      <div class="warn">Votre personnel devra saisir le montant de chaque achat dans l'appli.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-ico">◉</div>
+      <div class="card-info">
+        <div class="card-t">Carte Reward</div>
+        <div class="card-st">Points échangeables contre récompenses</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-ex">Votre client gagne des points à chaque achat et choisit sa récompense dans un catalogue que vous définissez.<br><br><strong>Exemple :</strong> "100 pts = café offert · 500 pts = -10€ · 1000 pts = produit gratuit"</div>
+      <span class="card-badge b-purple">Idéal : restaurant, boutique variée</span>
+      <div class="warn">Votre personnel devra saisir le montant de chaque achat dans l'appli.</div>
+    </div>
+  </div>
+
+  <div class="footer">noveather.fr · contact@noveather.fr</div>
+</div>
+
+<!-- ════ VIEW TERRAIN ════ -->
+<div class="view" id="view-terrain">
+  <div class="terrain-intro">
+    <strong>Outil d'aide au choix.</strong><br>
+    Répondez à 3 questions — la carte idéale s'affiche automatiquement.
+  </div>
+
+  <div class="qcard" id="q1">
+    <div class="qcard-head">
+      <div class="q-step">Question 1 / 3</div>
+      <div class="q-text">Comment vos clients achètent chez vous ?</div>
+    </div>
+    <div class="opts">
+      <button class="opt" onclick="pick(1,'visite',this)">
+        <div class="opt-t">Visites régulières</div>
+        <div class="opt-s">Ils reviennent toutes les semaines ou tous les mois</div>
+      </button>
+      <button class="opt" onclick="pick(1,'achat',this)">
+        <div class="opt-t">Achats variables</div>
+        <div class="opt-s">Ils dépensent des montants différents à chaque visite</div>
+      </button>
+      <button class="opt" onclick="pick(1,'seances',this)">
+        <div class="opt-t">Séances ou prestations</div>
+        <div class="opt-s">Massage, cours de sport, soin — une prestation à chaque visite</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="qcard locked" id="q2">
+    <div class="qcard-head">
+      <div class="q-step">Question 2 / 3</div>
+      <div class="q-text">Quel est votre objectif principal ?</div>
+    </div>
+    <div class="opts">
+      <button class="opt" onclick="pick(2,'retour',this)">
+        <div class="opt-t">Faire revenir plus souvent</div>
+        <div class="opt-s">Augmenter la fréquence de visite</div>
+      </button>
+      <button class="opt" onclick="pick(2,'panier',this)">
+        <div class="opt-t">Augmenter le panier moyen</div>
+        <div class="opt-s">Inciter à dépenser plus à chaque visite</div>
+      </button>
+      <button class="opt" onclick="pick(2,'nouveaux',this)">
+        <div class="opt-t">Attirer de nouveaux clients</div>
+        <div class="opt-s">Faire venir des personnes qui ne vous connaissent pas encore</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="qcard locked" id="q3">
+    <div class="qcard-head">
+      <div class="q-step">Question 3 / 3</div>
+      <div class="q-text">Votre équipe peut-elle saisir un montant à chaque vente ?</div>
+    </div>
+    <div class="opts">
+      <button class="opt" onclick="pick(3,'oui',this)">
+        <div class="opt-t">Oui, sans problème</div>
+        <div class="opt-s">Mon équipe peut saisir le montant dans l'appli à chaque scan</div>
+      </button>
+      <button class="opt" onclick="pick(3,'non',this)">
+        <div class="opt-t">Non, je préfère automatique</div>
+        <div class="opt-s">Je veux juste scanner la carte sans rien saisir</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="result" id="result">
+    <div class="result-label">Notre recommandation</div>
+    <div class="result-name" id="res-name"></div>
+    <div class="result-body" id="res-body"></div>
+    <div class="result-note" id="res-note"></div>
+    <button class="btn-reset" onclick="reset()">↩ Recommencer</button>
+  </div>
+
+  <div class="footer">noveather.fr · contact@noveather.fr</div>
+</div>
+
+<script>
+const A={};
+const reco={
+  'visite-retour-oui':'Carte Tampon','visite-retour-non':'Carte Tampon',
+  'visite-panier-oui':'Carte Cashback','visite-panier-non':'Carte Tampon',
+  'visite-nouveaux-oui':'Carte Coupon','visite-nouveaux-non':'Carte Coupon',
+  'achat-retour-oui':'Carte Cashback','achat-retour-non':'Carte Discount',
+  'achat-panier-oui':'Carte Reward','achat-panier-non':'Carte Discount',
+  'achat-nouveaux-oui':'Carte Coupon','achat-nouveaux-non':'Carte Coupon',
+  'seances-retour-oui':'Carte Multipass','seances-retour-non':'Carte Multipass',
+  'seances-panier-oui':'Carte Membership','seances-panier-non':'Carte Membership',
+  'seances-nouveaux-oui':'Carte Coupon','seances-nouveaux-non':'Carte Coupon'
+};
+const details={
+  'Carte Tampon':{body:"Un tampon par visite. Quand votre client atteint le nombre défini (ex : 10 visites), il reçoit automatiquement sa récompense. Aucune saisie de montant — juste un scan.",note:"La carte la plus facile à utiliser au quotidien. Vos clients comprennent en 10 secondes."},
+  'Carte Cashback':{body:"Votre client gagne un % de chaque achat. À chaque scan, votre équipe saisit le montant — le calcul est automatique. Quand il a assez de points, il reçoit une réduction.",note:"Demande que le personnel saisisse le montant à chaque scan. Très efficace pour les clients qui dépensent beaucoup."},
+  'Carte Multipass':{body:"Votre client achète un carnet de séances à l'avance à prix réduit. À chaque visite, une séance est décomptée automatiquement. Vous encaissez en avance et garantissez les visites futures.",note:"Excellent pour la trésorerie — l'argent rentre avant même que le client soit venu."},
+  'Carte Membership':{body:"Votre client a un statut VIP (Silver, Gold, Platinum) avec des avantages exclusifs à chaque niveau. Sa carte change visuellement quand il monte de niveau.",note:"Très efficace pour les structures avec des prestations variées et une clientèle qui aime se sentir reconnue."},
+  'Carte Reward':{body:"Votre client accumule des points selon le montant dépensé et choisit sa récompense dans un catalogue que vous définissez. Plus engageant qu'un simple cashback.",note:"Demande que le personnel saisisse le montant à chaque scan. Très puissant pour les restaurants et boutiques variées."},
+  'Carte Discount':{body:"Votre client bénéficie d'une réduction automatique à chaque achat — fixe ou progressive selon son historique. Simple à comprendre pour tout le monde.",note:"Idéal pour fidéliser les habitués sans gérer des points ou des tampons."},
+  'Carte Coupon':{body:"Vous distribuez un coupon de réduction (Instagram, WhatsApp, en boutique) utilisable une seule fois. Parfait pour attirer des personnes qui ne vous connaissent pas encore.",note:"À utiliser en complément d'une autre carte — le coupon attire le client, la carte de fidélité le retient."}
+};
+
+function pick(q,val,el){
+  A[q]=val;
+  document.querySelectorAll('#q'+q+' .opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  if(q<3){
+    document.getElementById('q'+(q+1)).classList.remove('locked');
+    setTimeout(()=>{document.getElementById('q'+(q+1)).scrollIntoView({behavior:'smooth',block:'start'})},100);
+  }
+  if(q===3) showResult();
+}
+
+function showResult(){
+  const key=A[1]+'-'+A[2]+'-'+A[3];
+  const card=reco[key]||'Carte Tampon';
+  const d=details[card];
+  document.getElementById('res-name').textContent=card;
+  document.getElementById('res-body').textContent=d.body;
+  document.getElementById('res-note').textContent=d.note;
+  const r=document.getElementById('result');
+  r.classList.add('show');
+  setTimeout(()=>{r.scrollIntoView({behavior:'smooth',block:'start'})},100);
+}
+
+function reset(){
+  [1,2,3].forEach(q=>{
+    A[q]=null;
+    document.querySelectorAll('#q'+q+' .opt').forEach(o=>o.classList.remove('sel'));
+    if(q>1) document.getElementById('q'+q).classList.add('locked');
+  });
+  document.getElementById('result').classList.remove('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function setTab(t){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('view-'+t).classList.add('on');
+  event.target.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
