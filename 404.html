@@ -196,8 +196,30 @@
     }
     .footer-bottom p { font-size: 0.82rem; color: var(--text-subtle); }
     .footer-siret { font-size: 0.78rem; color: var(--text-subtle); }
+    /* BURGER MENU */
+    .burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 24px 20px; z-index: 99; flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; color: var(--text-muted); padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:hover { color: var(--text); }
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .burger { display: flex; }
       .footer-inner { grid-template-columns: 1fr; gap: 32px; }
       .error-code { font-size: 5rem; }
       .error-title { font-size: 1.4rem; }
@@ -221,12 +243,24 @@
         <li><a href="/#faq">FAQ</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li>
-          <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener"
+          <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener noreferrer"
              class="btn-gradient" aria-label="Réserver une démo gratuite sur Calendly">Réserver une démo</a>
         </li>
       </ul>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu de navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/#pricing">Tarifs</a>
+    <a href="/#how">Comment ça marche</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener noreferrer"
+       class="btn-gradient" style="text-align:center" aria-label="Réserver une démo gratuite">Réserver une démo</a>
+  </div>
 
   <!-- MAIN CONTENT -->
   <main id="main-content">
@@ -253,7 +287,7 @@
         <p class="footer-desc">Solution de cartes de fidélité digitales pour commerçants en Guadeloupe.</p>
         <p class="footer-contact"><a href="mailto:contact@noveather.fr" style="color:inherit">contact@noveather.fr</a></p>
         <p class="footer-contact"><a href="tel:+590691275457" style="color:inherit">+590 691 27 54 57</a></p>
-        <a href="https://wa.me/message/RXQRCEI6D6PIH1" target="_blank" rel="noopener"
+        <a href="https://wa.me/message/RXQRCEI6D6PIH1" target="_blank" rel="noopener noreferrer"
            class="footer-wa" aria-label="Contacter Noveather sur WhatsApp">
           💬 WhatsApp
         </a>
@@ -265,7 +299,7 @@
           <li><a href="/#how">Comment ça marche</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener">Réserver une démo</a></li>
+          <li><a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener noreferrer">Réserver une démo</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -284,5 +318,13 @@
     </div>
   </footer>
 <script src="/cookie-banner.js"></script>
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+</script>
 </body>
 </html>
