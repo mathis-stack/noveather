@@ -30,8 +30,8 @@
       --bg-card: rgba(255,255,255,0.03);
       --border: rgba(255,255,255,0.07);
       --text: #ffffff;
-      --text-muted: rgba(255,255,255,0.7);
-      --text-subtle: rgba(255,255,255,0.5);
+      --text-muted: rgba(255,255,255,0.78);
+      --text-subtle: rgba(255,255,255,0.55);
       --accent-start: #3b82f6;
       --accent-end: #10b981;
       --accent: linear-gradient(90deg, #3b82f6, #10b981);
@@ -262,7 +262,7 @@
     </div>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navigation mobile" aria-hidden="true">
     <a href="/#pricing">Tarifs</a>
     <a href="/#how">Comment ça marche</a>
     <a href="/#faq">FAQ</a>
@@ -294,8 +294,8 @@
       <div>
         <div class="footer-logo"><img src="/assets/logo-noveather.svg" alt="Noveather" height="28" width="104" loading="lazy"></div>
         <p class="footer-desc">Solution de cartes de fidélité digitales pour commerçants en Guadeloupe.</p>
-        <p class="footer-contact"><a href="mailto:contact@noveather.fr" style="color:inherit">contact@noveather.fr</a></p>
-        <p class="footer-contact"><a href="tel:+590691275457" style="color:inherit">+590 691 27 54 57</a></p>
+        <p class="footer-contact"><a href="mailto:contact@noveather.fr" style="color:inherit" aria-label="Envoyer un email à Noveather">contact@noveather.fr</a></p>
+        <p class="footer-contact"><a href="tel:+590691275457" style="color:inherit" aria-label="Appeler Noveather">+590 691 27 54 57</a></p>
         <a href="https://wa.me/message/RXQRCEI6D6PIH1" target="_blank" rel="noopener noreferrer"
            class="footer-wa" aria-label="Contacter Noveather sur WhatsApp">
           💬 WhatsApp
@@ -313,7 +313,7 @@
       </div>
       <div class="footer-col">
         <h4>Légal</h4>
-        <ul>
+        <ul role="list">
           <li><a href="/mentions-legales.html#mentions">Mentions légales</a></li>
           <li><a href="/mentions-legales.html#cgv">CGV</a></li>
           <li><a href="/mentions-legales.html#rgpd">RGPD</a></li>
@@ -333,6 +333,7 @@
   burger.addEventListener('click', () => {
     burger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
+    mobileMenu.setAttribute('aria-hidden', !mobileMenu.classList.contains('open'));
   });
 </script>
 </body>
