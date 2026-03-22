@@ -2,8 +2,4 @@ User-agent: *
 Disallow: /merci
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-Host: https://noveather.fr
 Sitemap: https://noveather.fr/sitemap.xml
