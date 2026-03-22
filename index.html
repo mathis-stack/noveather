@@ -7,6 +7,7 @@
   <meta name="description" content="Noveather remplace vos cartes tampon papier par une carte de fidélité digitale Apple Wallet &amp; Google Wallet. Sans application. Configurée sous 48-72h ouvrées. Dès 89€/mois. Spécialement conçu pour les commerçants en Guadeloupe.">
   <meta name="keywords" content="carte de fidélité digitale Guadeloupe, programme fidélité commerçant Guadeloupe, Apple Wallet Guadeloupe, Google Wallet Guadeloupe, fidélisation client Guadeloupe, carte tampon digitale">
   <link rel="canonical" href="https://noveather.fr/">
+  <link rel="manifest" href="/manifest.json">
   <meta name="robots" content="index, follow">
   <link rel="alternate" hreflang="fr" href="https://noveather.fr/">
   <link rel="alternate" hreflang="x-default" href="https://noveather.fr/">
@@ -28,7 +29,6 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#3b82f6">
-  <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet">
   <!-- Google Search Console verification: remplacer par votre balise meta de vérification -->
@@ -946,7 +946,6 @@
         🔥 Prix de lancement — Offre réservée aux premiers commerçants en Guadeloupe
       </span>
     </div>
-
     <div class="pricing-toggle">
       <span class="toggle-label active" id="label-monthly">Mensuel</span>
       <button class="toggle-btn" id="billingToggle" role="switch" aria-checked="false" aria-label="Basculer entre facturation mensuelle et annuelle"></button>
@@ -1323,14 +1322,11 @@
     updatePricing();
   });
 
-  // Tracking CTA clicks
+  // CTA click tracking
   document.querySelectorAll('[data-cta]').forEach(function(el) {
     el.addEventListener('click', function() {
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'click_cta', {
-          'event_category': 'engagement',
-          'event_label': el.getAttribute('data-cta')
-        });
+        gtag('event', 'click_cta', { event_category: 'engagement', event_label: el.getAttribute('data-cta') });
       }
     });
   });
