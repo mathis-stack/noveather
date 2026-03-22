@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no">
   <!-- Google Tag Manager removed — loaded conditionally by cookie-banner.js -->
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#080d14">
-  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.bunny.net">
+  <link rel="preload" href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" as="style">
   <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -22,7 +25,7 @@
       --border: rgba(255,255,255,0.07);
       --text: #ffffff;
       --text-muted: rgba(255,255,255,0.7);
-      --text-subtle: rgba(255,255,255,0.35);
+      --text-subtle: rgba(255,255,255,0.5);
       --accent-start: #3b82f6;
       --accent-end: #10b981;
       --accent: linear-gradient(90deg, #3b82f6, #10b981);
@@ -218,15 +221,21 @@
       .merci-title { font-size: 1.6rem; }
       .merci-subtitle { font-size: 1rem; }
     }
+    @media print {
+      nav, .burger, .mobile-menu, .footer-wa, .cookie-banner { display: none !important; }
+      body { background: #fff; color: #000; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+<noscript><style>.cookie-banner{display:none!important}</style></noscript>
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
   <!-- NAVIGATION -->
   <nav id="navbar" aria-label="Navigation principale">
     <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="/assets/logo-noveather.svg" alt="Noveather" height="36"></a>
+      <a href="/" class="nav-logo"><img src="/assets/logo-noveather.svg" alt="Noveather" height="36" width="134" fetchpriority="high"></a>
       <ul class="nav-links">
         <li><a href="/#pricing">Tarifs</a></li>
         <li><a href="/#how">Comment ça marche</a></li>
@@ -278,7 +287,7 @@
   <footer role="contentinfo">
     <div class="footer-inner">
       <div>
-        <div class="footer-logo"><img src="/assets/logo-noveather.svg" alt="Noveather" height="28"></div>
+        <div class="footer-logo"><img src="/assets/logo-noveather.svg" alt="Noveather" height="28" width="104" loading="lazy"></div>
         <p class="footer-desc">Solution de cartes de fidélité digitales pour commerçants en Guadeloupe.</p>
         <p class="footer-contact"><a href="mailto:contact@noveather.fr" style="color:inherit">contact@noveather.fr</a></p>
         <p class="footer-contact"><a href="tel:+590691275457" style="color:inherit">+590 691 27 54 57</a></p>
@@ -313,7 +322,7 @@
     </div>
   </footer>
 
-  <script src="/cookie-banner.js"></script>
+  <script src="/cookie-banner.js" defer></script>
   <script>
     (function () {
       var plan = new URLSearchParams(window.location.search).get('plan');
