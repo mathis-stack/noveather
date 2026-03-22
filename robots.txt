@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
 Disallow: /choix-carte
+Allow: /
 Sitemap: https://noveather.fr/sitemap.xml
