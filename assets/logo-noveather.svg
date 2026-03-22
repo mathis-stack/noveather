@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none" role="img" aria-label="Noveather">
+  <defs>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a832"/>
+      <stop offset="50%" stop-color="#b8972a"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+  </defs>
+  <!-- 5-branch star -->
+  <polygon points="22,4 25.5,15 37,15 27.5,22 31,33 22,26 13,33 16.5,22 7,15 18.5,15"
+    fill="url(#starGrad)" stroke="#b8972a" stroke-width="0.5"/>
+  <!-- "Noveather" text, "ea" in gold -->
+  <text x="48" y="30" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="22" fill="#1a2744" letter-spacing="-0.5">Nov</text>
+  <text x="87" y="30" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="22" fill="#b8972a" letter-spacing="-0.5">ea</text>
+  <text x="107" y="30" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="22" fill="#1a2744" letter-spacing="-0.5">ther</text>
+</svg>
