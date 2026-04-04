@@ -182,6 +182,42 @@
       border: 1px solid rgba(37,211,102,0.25);
       border-radius: var(--radius-pill);
       font-size: 0.85rem; font-weight: 600; color: #25d366;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .footer-wa:hover { background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.4); }
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: whaFadeIn 0.4s ease forwards;
+      animation-delay: 1.5s; opacity: 0;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+    .whatsapp-float:active { transform: scale(0.95); }
+    .whatsapp-tooltip {
+      position: absolute; bottom: 68px; right: 0;
+      background: #ffffff; color: #075E54;
+      font-size: 12px; font-weight: 600; padding: 6px 12px;
+      border-radius: 20px; white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none; font-family: inherit;
+    }
+    .whatsapp-tooltip::after {
+      content: ''; position: absolute; bottom: -5px; right: 18px;
+      width: 10px; height: 10px; background: #ffffff;
+      transform: rotate(45deg); box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+    }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; transform: translateY(0); }
+    @keyframes whaFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .footer-col h4 {
       font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
@@ -336,5 +372,13 @@
     mobileMenu.setAttribute('aria-hidden', !mobileMenu.classList.contains('open'));
   });
 </script>
+<!-- WhatsApp Float Button -->
+<a class="whatsapp-float" href="https://wa.me/message/RXQRCEI6D6PIH1" target="_blank" rel="noopener noreferrer" aria-label="Nous contacter sur WhatsApp" title="Nous contacter sur WhatsApp">
+  <span class="whatsapp-tooltip">💬 Écrivez-nous</span>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.854L.057 23.5a.5.5 0 00.613.613l5.652-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.667-.525-5.176-1.434l-.372-.22-3.853 1.005 1.028-3.742-.242-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
 </body>
 </html>
