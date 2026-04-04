@@ -634,21 +634,27 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
       margin-bottom: 24px;
     }
+    /* PARTIE 3 — Hover effect sur toutes les cards pricing */
     .pricing-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
-      position: relative; transition: all 0.2s;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .pricing-card:hover {
       background: var(--bg-card-hover);
       border-color: var(--border-hover);
-      transform: translateY(-2px);
+      transform: translateY(-6px);
     }
+    /* Lueur colorée au survol selon l'accent de la card */
+    .pricing-card.accent-blue:hover  { box-shadow: 0 12px 40px rgba(59, 130, 246, 0.25); }
+    .pricing-card.accent-purple:hover { box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25); }
+    .pricing-card.accent-orange:hover { box-shadow: 0 12px 40px rgba(249, 115, 22, 0.25); }
     .pricing-card.popular {
-      border-color: rgba(59,130,246,0.35);
-      background: rgba(59,130,246,0.04);
+      border-color: rgba(139,92,246,0.35);
+      background: rgba(139,92,246,0.04);
     }
     .popular-badge {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
@@ -658,7 +664,12 @@
     }
     .pricing-name {
       font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    /* Sous-titre de la card */
+    .pricing-subtitle {
+      font-size: 0.78rem; color: var(--text-subtle);
+      margin-bottom: 16px; line-height: 1.4;
     }
     .pricing-price {
       font-size: 2.4rem; font-weight: 800; margin-bottom: 4px;
@@ -668,12 +679,21 @@
       font-size: 0.85rem; color: var(--text-subtle);
       text-decoration: line-through; margin-bottom: 4px; min-height: 20px;
     }
+    /* Note sous le prix (trimestriel/annuel) */
+    .pricing-sub-note {
+      font-size: 0.8rem; color: var(--text-subtle); margin-bottom: 4px; min-height: 18px;
+    }
     .pricing-install {
       font-size: 0.82rem; color: var(--text-muted);
-      margin-bottom: 24px; padding-bottom: 20px;
+      margin-bottom: 20px; padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
     }
-    .pricing-features { list-style: none; margin-bottom: 28px; }
+    /* Label de section à l'intérieur d'une card */
+    .pricing-section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      color: var(--text-subtle); margin: 16px 0 6px; text-transform: uppercase;
+    }
+    .pricing-features { list-style: none; margin-bottom: 20px; }
     .pricing-features li {
       font-size: 0.88rem; color: var(--text-muted);
       padding: 7px 0; display: flex; gap: 10px; align-items: flex-start;
@@ -689,6 +709,54 @@
     .pricing-note {
       text-align: center; font-size: 0.82rem;
       color: var(--text-subtle); max-width: 600px; margin: 0 auto;
+    }
+    /* PARTIE 2 — Styles spécifiques à la section Self-Service */
+    /* Cards en pointillés pour distinguer visuellement des deux offres */
+    .pricing-card.self-service {
+      border-style: dashed;
+      background: rgba(255,255,255,0.03);
+    }
+    /* Phrase de transition entre les deux sections */
+    .pricing-section-sep {
+      text-align: center; margin: 56px 0 48px;
+      color: var(--text-subtle); font-size: 0.95rem; line-height: 1.7;
+      padding: 24px 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .pricing-section-sep strong { color: var(--text-muted); }
+    /* En-tête de la sous-section Self-Service */
+    .pricing-subsection-header {
+      text-align: center; margin-bottom: 32px;
+    }
+    .pricing-subsection-header h3 {
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .pricing-subsection-header p {
+      font-size: 0.92rem; color: var(--text-muted);
+    }
+    /* Toggle 3 états (Mensuel / Trimestriel / Annuel) pour le Self-Service */
+    .self-toggle {
+      display: flex; align-items: center; justify-content: center;
+      gap: 4px; margin-bottom: 48px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-pill); padding: 4px;
+      width: fit-content; margin-left: auto; margin-right: auto;
+    }
+    .self-toggle-btn {
+      padding: 8px 22px; border-radius: var(--radius-pill);
+      border: none; background: transparent; color: var(--text-muted);
+      font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .self-toggle-btn.active {
+      background: var(--accent); color: #fff; font-weight: 600;
+    }
+    /* Note sous CTA */
+    .pricing-cta-note {
+      text-align: center; font-size: 0.78rem; color: var(--text-subtle);
+      margin-top: 10px;
     }
 
     /* HOW IT WORKS */
@@ -901,6 +969,9 @@
       .hero-btns { flex-direction: column; align-items: center; }
       .btn-outline, .btn-primary { width: 100%; text-align: center; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      /* Self-toggle : réduire les boutons sur petits écrans */
+      .self-toggle { width: 100%; }
+      .self-toggle-btn { padding: 8px 12px; font-size: 0.82rem; }
     }
     @media print {
       nav, .burger, .mobile-menu, .footer-wa, .cookie-banner { display: none !important; }
@@ -1206,11 +1277,20 @@
       <p>Sans engagement mensuel. Résiliable à tout moment avec 30 jours de préavis. 2 mois offerts en engagement annuel.</p>
     </div>
 
+    <!-- ===== OFFRE ACCOMPAGNÉE ===== -->
+    <!-- Je m'occupe de tout : configuration, campagnes, suivi -->
     <div style="text-align:center;margin-bottom:32px;">
       <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:100px;padding:8px 20px;font-size:0.88rem;font-weight:600;color:#ef4444;">
         🔥 Prix de lancement — Offre réservée aux premiers commerçants en Guadeloupe
       </span>
     </div>
+
+    <div class="pricing-subsection-header">
+      <h3>Offre Accompagnée</h3>
+      <p>Je m'occupe de tout — configuration, campagnes, suivi client.</p>
+    </div>
+
+    <!-- Toggle Mensuel / Annuel (offre accompagnée) -->
     <div class="pricing-toggle">
       <span class="toggle-label active" id="label-monthly">Mensuel</span>
       <button class="toggle-btn" id="billingToggle" role="switch" aria-checked="false" aria-label="Basculer entre facturation mensuelle et annuelle"></button>
@@ -1219,84 +1299,256 @@
     </div>
 
     <div class="pricing-grid">
-      <!-- STARTER -->
-      <div class="pricing-card">
-        <div class="pricing-name">Starter</div>
-        <div class="pricing-price"><span id="price-starter">89€</span><span id="period-starter">/mois</span></div>
+
+      <!-- STARTER ACCOMPAGNÉ — accent bleu #3b82f6 -->
+      <div class="pricing-card accent-blue">
+        <div class="pricing-name" style="color:#3b82f6">Starter</div>
+        <div class="pricing-subtitle">Offre de gestion · Idéal salon beauté &amp; coiffure</div>
+        <div class="pricing-price"><span id="price-starter">109€</span><span id="period-starter">/mois</span></div>
         <div class="pricing-original" id="original-starter"></div>
-        <div class="pricing-install">+ 99€ frais d'installation uniques</div>
+        <div class="pricing-install">+ 99€ mise en place unique</div>
+
+        <div class="pricing-section-label">CE QUE JE FAIS POUR VOUS</div>
         <ul class="pricing-features">
-          <li>1 type de carte au choix parmi 8</li>
-          <li>QR code + page d'inscription personnalisée</li>
-          <li>Apple Wallet + Google Wallet</li>
-          <li>Application scanner pour votre personnel</li>
-          <li>CRM de base — voir vos porteurs</li>
-          <li>Statistiques de base</li>
-          <li>1 point de vente</li>
-          <li>Sticker vitrine Noveather offert</li>
-          <li>Support email sous 72h</li>
+          <li>Création complète de votre carte de fidélité</li>
+          <li>Configuration adaptée à votre activité</li>
+          <li>Mise en place d'un système simple pour fidéliser</li>
+          <li>Création de vos premières offres</li>
+          <li>Mise en place de campagnes de relance clients</li>
+          <li>Suivi de vos clients (qui revient, qui ne revient pas)</li>
+          <li>Accompagnement au démarrage</li>
         </ul>
+
+        <div class="pricing-section-label">RÉSULTAT</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li>Une fidélisation simple et efficace</li>
+          <li>Vos premiers clients qui reviennent</li>
+          <li>Aucun temps à y consacrer</li>
+        </ul>
+
         <a id="btn-starter"
-           href="https://buy.stripe.com/14A14nbFs3L39fMf2q7Zu02"
+           href="https://wa.me/message/RXQRCEI6D6PIH1"
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
-           aria-label="Commencer avec le plan Starter" data-cta="pricing_starter">Commencer avec Starter →</a>
+           aria-label="Commencer avec le plan Starter Accompagné" data-cta="pricing_starter_acc">Commencer avec Starter →</a>
       </div>
 
-      <!-- PRO -->
-      <div class="pricing-card popular">
+      <!-- PRO ACCOMPAGNÉ — accent violet #8b5cf6 -->
+      <div class="pricing-card popular accent-purple">
         <div class="popular-badge">Le plus populaire</div>
-        <div class="pricing-name">Pro</div>
-        <div class="pricing-price"><span id="price-pro">129€</span><span id="period-pro">/mois</span></div>
+        <div class="pricing-name" style="color:#8b5cf6">Pro</div>
+        <div class="pricing-subtitle">Offre de gestion · Développez votre clientèle</div>
+        <div class="pricing-price"><span id="price-pro">159€</span><span id="period-pro">/mois</span></div>
         <div class="pricing-original" id="original-pro"></div>
-        <div class="pricing-install">+ 169€ frais d'installation uniques</div>
+        <div class="pricing-install">+ 169€ mise en place unique</div>
+
+        <div class="pricing-section-label">CE QUE JE FAIS POUR VOUS</div>
         <ul class="pricing-features">
-          <li>Tout Starter +</li>
-          <li>2 types de cartes au choix parmi 8</li>
-          <li>Flows automatisés configurés pour vous</li>
-          <li>Push géolocalisées à 100m de votre commerce</li>
-          <li>Programme de parrainage client</li>
-          <li>CRM complet + filtres comportement</li>
-          <li>Statistiques avancées</li>
-          <li>Support prioritaire sous 48h</li>
+          <li>Stratégie de fidélisation personnalisée</li>
+          <li>Création et optimisation de vos offres</li>
+          <li>Mise en place de plusieurs campagnes</li>
+          <li>Segmentation de vos clients (habitués, inactifs…)</li>
+          <li>Relances ciblées pour faire revenir vos clients</li>
+          <li>Suivi des performances</li>
+          <li>Ajustement des offres pour améliorer les résultats</li>
         </ul>
+
+        <div class="pricing-section-label">RÉSULTAT</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li>Plus de clients fidèles</li>
+          <li>Plus de visites régulières</li>
+          <li>Développement de votre clientèle</li>
+        </ul>
+
         <a id="btn-pro"
-           href="https://buy.stripe.com/14A14n8tg5TbbnU2fE7Zu04"
+           href="https://wa.me/message/RXQRCEI6D6PIH1"
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
-           aria-label="Commencer avec le plan Pro" data-cta="pricing_pro">Commencer avec Pro →</a>
+           aria-label="Commencer avec le plan Pro Accompagné" data-cta="pricing_pro_acc">Commencer avec Pro →</a>
       </div>
 
-      <!-- BUSINESS -->
-      <div class="pricing-card">
-        <div class="pricing-name">Business</div>
-        <div class="pricing-price"><span id="price-business">219€</span><span id="period-business">/mois</span></div>
+      <!-- BUSINESS ACCOMPAGNÉ — accent orange #f97316 -->
+      <div class="pricing-card accent-orange">
+        <div class="pricing-name" style="color:#f97316">Business</div>
+        <div class="pricing-subtitle">Offre de gestion · Maximisez votre chiffre d'affaires</div>
+        <div class="pricing-price"><span id="price-business">249€</span><span id="period-business">/mois</span></div>
         <div class="pricing-original" id="original-business"></div>
-        <div class="pricing-install">+ 249€ frais d'installation uniques</div>
+        <div class="pricing-install">+ 249€ mise en place unique</div>
+
+        <div class="pricing-section-label">CE QUE JE FAIS POUR VOUS</div>
         <ul class="pricing-features">
-          <li>Tout Pro +</li>
-          <li>3 types de cartes au choix parmi 8</li>
-          <li>Jusqu'à 3 points de vente inclus</li>
-          <li>Carte Multipass prépayée</li>
-          <li>SMS marketing 50/mois</li>
-          <li>Multi-managers — toute votre équipe</li>
-          <li>Rapport PDF mensuel personnalisé</li>
-          <li>Analyse RFM de votre clientèle</li>
-          <li>Onboarding dédié 2h sur site</li>
-          <li>Support téléphonique dédié</li>
-          <li>Au-delà de 3 sites : sur devis</li>
+          <li>Mise en place de stratégies avancées de fidélisation</li>
+          <li>Création de scénarios de relance automatiques</li>
+          <li>Analyse complète de votre clientèle</li>
+          <li>Optimisation continue de vos campagnes</li>
+          <li>Ajustement des offres pour maximiser vos résultats</li>
+          <li>Rapport mensuel + recommandations</li>
+          <li>Suivi et accompagnement premium</li>
         </ul>
+
+        <div class="pricing-section-label">RÉSULTAT</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li>Augmentation du chiffre d'affaires</li>
+          <li>Clients plus fidèles et réguliers</li>
+          <li>Une stratégie marketing qui travaille pour vous</li>
+        </ul>
+
         <a id="btn-business"
-           href="https://buy.stripe.com/fZu3cvdNA3L34Zw6vU7Zu06"
+           href="https://wa.me/message/RXQRCEI6D6PIH1"
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
-           aria-label="Commencer avec le plan Business" data-cta="pricing_business">Commencer avec Business →</a>
+           aria-label="Commencer avec le plan Business Accompagné" data-cta="pricing_business_acc">Commencer avec Business →</a>
       </div>
-    </div>
+
+    </div><!-- /.pricing-grid -->
 
     <p style="text-align:center;margin-top:24px;font-size:0.9rem;color:rgba(255,255,255,0.6)">
       Vous ne savez pas quelle carte choisir ? <a href="/choix-carte.html" style="color:#3b82f6;text-decoration:underline">Découvrez notre guide de sélection →</a>
     </p>
+
+    <!-- ===== TRANSITION ===== -->
+    <div class="pricing-section-sep">
+      Vous préférez gérer en autonomie ? <strong>Accédez directement à la plateforme</strong> et configurez votre carte vous-même.
+    </div>
+
+    <!-- ===== OFFRE SELF-SERVICE ===== -->
+    <!-- Vous configurez tout vous-même via la plateforme -->
+    <div class="pricing-subsection-header">
+      <h3>Gérez votre fidélité en autonomie</h3>
+      <p>Accédez directement à la plateforme et configurez votre carte vous-même.</p>
+    </div>
+
+    <!-- Toggle Mensuel / Trimestriel / Annuel (self-service) -->
+    <div class="self-toggle" role="group" aria-label="Fréquence de facturation">
+      <button class="self-toggle-btn active" id="ss-btn-monthly" aria-pressed="true">Mensuel</button>
+      <button class="self-toggle-btn" id="ss-btn-quarterly" aria-pressed="false">Trimestriel</button>
+      <button class="self-toggle-btn" id="ss-btn-annual" aria-pressed="false">Annuel <span class="annual-badge" style="font-size:0.65rem;padding:2px 7px;vertical-align:middle">2 mois offerts</span></button>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- STARTER SELF — accent bleu #3b82f6 -->
+      <div class="pricing-card self-service accent-blue">
+        <div class="pricing-name" style="color:#3b82f6">Starter Self</div>
+        <div class="pricing-subtitle">Parfait pour débuter avec la fidélité digitale</div>
+        <div class="pricing-price">
+          <span id="ss-price-starter">59€</span><span id="ss-period-starter">/mois</span>
+        </div>
+        <div class="pricing-sub-note" id="ss-note-starter"></div>
+        <div class="pricing-original" id="ss-original-starter"></div>
+        <div class="pricing-install" style="margin-bottom:20px;padding-bottom:16px">Accès immédiat à la plateforme</div>
+
+        <div class="pricing-section-label">FONCTIONNALITÉS INCLUSES</div>
+        <ul class="pricing-features">
+          <li>1 campagne promotionnelle active</li>
+          <li>Tous types de cartes illimitées</li>
+          <li>Apple Wallet &amp; Google Wallet</li>
+          <li>QR code + page d'inscription</li>
+          <li>CRM intégré (suivi des clients)</li>
+          <li>Notifications PUSH illimitées</li>
+          <li>1 géolocalisation (à proximité)</li>
+          <li>Scanner pour votre équipe</li>
+          <li>Statistiques de base</li>
+        </ul>
+
+        <div class="pricing-section-label">CE QUE ÇA VOUS APPORTE</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li>Faites revenir vos clients facilement</li>
+          <li>Mettez en place une fidélité simple et efficace</li>
+          <li>Commencez à construire votre base client</li>
+        </ul>
+
+        <a href="https://app.noveather.fr/registration"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary" style="width:100%;text-align:center;display:block"
+           aria-label="Démarrer avec Starter Self-Service" data-cta="pricing_starter_self">Démarrer avec Starter → 59€/mois</a>
+        <p class="pricing-cta-note">Vous configurez tout vous-même · Support par email inclus</p>
+      </div>
+
+      <!-- PRO SELF — accent violet #8b5cf6 — badge POPULAIRE -->
+      <div class="pricing-card self-service popular accent-purple">
+        <div class="popular-badge">POPULAIRE</div>
+        <div class="pricing-name" style="color:#8b5cf6">Pro Self</div>
+        <div class="pricing-subtitle">Le choix des pros pour développer leur clientèle</div>
+        <div class="pricing-price">
+          <span id="ss-price-pro">99€</span><span id="ss-period-pro">/mois</span>
+        </div>
+        <div class="pricing-sub-note" id="ss-note-pro"></div>
+        <div class="pricing-original" id="ss-original-pro"></div>
+        <div class="pricing-install" style="margin-bottom:20px;padding-bottom:16px">Accès immédiat à la plateforme</div>
+
+        <div class="pricing-section-label">FONCTIONNALITÉS INCLUSES</div>
+        <ul class="pricing-features">
+          <li>3 campagnes promotionnelles</li>
+          <li>Tous types de cartes illimitées</li>
+          <li>Programme de parrainage</li>
+          <li>CRM avancé + segmentation</li>
+          <li>Notifications PUSH illimitées</li>
+          <li>3 géolocalisations (marketing)</li>
+          <li>Scanner pour votre équipe</li>
+          <li>Statistiques avancées</li>
+          <li>Jusqu'à 10 comptes managers</li>
+          <li>Champs personnalisés</li>
+        </ul>
+
+        <div class="pricing-section-label">CE QUE ÇA VOUS APPORTE</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li>Faites revenir vos clients plus souvent</li>
+          <li>Attirez de nouveaux clients avec le parrainage</li>
+          <li>Ciblez vos offres selon le comportement client</li>
+          <li>Augmentez la fréquence d'achat</li>
+        </ul>
+
+        <a href="https://app.noveather.fr/registration"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary" style="width:100%;text-align:center;display:block"
+           aria-label="Démarrer avec Pro Self-Service" data-cta="pricing_pro_self">Démarrer avec Pro → 99€/mois</a>
+        <p class="pricing-cta-note">Vous configurez tout vous-même · Support par email inclus</p>
+      </div>
+
+      <!-- BUSINESS SELF — accent orange #f97316 -->
+      <div class="pricing-card self-service accent-orange">
+        <div class="pricing-name" style="color:#f97316">Business Self</div>
+        <div class="pricing-subtitle">Puissance maximale pour les multi-points de vente</div>
+        <div class="pricing-price">
+          <span id="ss-price-business">149€</span><span id="ss-period-business">/mois</span>
+        </div>
+        <div class="pricing-sub-note" id="ss-note-business"></div>
+        <div class="pricing-original" id="ss-original-business"></div>
+        <div class="pricing-install" style="margin-bottom:20px;padding-bottom:16px">Accès immédiat à la plateforme</div>
+
+        <div class="pricing-section-label">FONCTIONNALITÉS INCLUSES</div>
+        <ul class="pricing-features">
+          <li>10 campagnes promotionnelles</li>
+          <li>Tous types de cartes illimitées</li>
+          <li>Programme de parrainage</li>
+          <li>Automatisation des notifications</li>
+          <li>CRM avancé + analyse comportement</li>
+          <li>Notifications PUSH illimitées</li>
+          <li>Jusqu'à 10 géolocalisations</li>
+          <li>Scanner pour votre équipe</li>
+          <li>Statistiques complètes + analyse</li>
+          <li>Jusqu'à 50 comptes managers</li>
+          <li>API &amp; intégrations</li>
+          <li>Champs personnalisés avancés</li>
+        </ul>
+
+        <div class="pricing-section-label">CE QUE ÇA VOUS APPORTE</div>
+        <ul class="pricing-features" style="margin-bottom:28px">
+          <li>Relance automatique des clients</li>
+          <li>Augmentez votre chiffre d'affaires</li>
+          <li>Analysez et optimisez vos performances</li>
+          <li>Transformez votre fidélisation en machine à revenus</li>
+        </ul>
+
+        <a href="https://app.noveather.fr/registration"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary" style="width:100%;text-align:center;display:block"
+           aria-label="Démarrer avec Business Self-Service" data-cta="pricing_business_self">Démarrer avec Business → 149€/mois</a>
+        <p class="pricing-cta-note">Vous configurez tout vous-même · Support par email inclus</p>
+      </div>
+
+    </div><!-- /.pricing-grid self-service -->
 
   </div>
 </section>
@@ -1547,7 +1799,7 @@
     });
   });
 
-  // PRICING TOGGLE
+  // PRICING TOGGLE — Offre Accompagnée (Mensuel / Annuel)
   const toggle = document.getElementById('billingToggle');
   const labelMonthly = document.getElementById('label-monthly');
   const labelAnnual = document.getElementById('label-annual');
@@ -1555,16 +1807,16 @@
 
   const plans = {
     starter: {
-      monthly: { price: '89€', period: '/mois', original: '', link: 'https://buy.stripe.com/14A14nbFs3L39fMf2q7Zu02' },
-      annual:  { price: '890€', period: '/an', original: 'au lieu de 1 068€', link: 'https://buy.stripe.com/bJe14ngZMftLgIe6vU7Zu0a' }
+      monthly: { price: '109€', period: '/mois', original: '' },
+      annual:  { price: '1 090€', period: '/an', original: 'au lieu de 1 308€' }
     },
     pro: {
-      monthly: { price: '129€', period: '/mois', original: '', link: 'https://buy.stripe.com/14A14n8tg5TbbnU2fE7Zu04' },
-      annual:  { price: '1 290€', period: '/an', original: 'au lieu de 1 548€', link: 'https://buy.stripe.com/6oU8wPaBo81j4Zwg6u7Zu0b' }
+      monthly: { price: '159€', period: '/mois', original: '' },
+      annual:  { price: '1 590€', period: '/an', original: 'au lieu de 1 908€' }
     },
     business: {
-      monthly: { price: '219€', period: '/mois', original: '', link: 'https://buy.stripe.com/fZu3cvdNA3L34Zw6vU7Zu06' },
-      annual:  { price: '2 190€', period: '/an', original: 'au lieu de 2 628€', link: 'https://buy.stripe.com/5kQ7sLaBoa9r4Zw07w7Zu0c' }
+      monthly: { price: '249€', period: '/mois', original: '' },
+      annual:  { price: '2 490€', period: '/an', original: 'au lieu de 2 988€' }
     }
   };
 
@@ -1577,7 +1829,6 @@
       document.getElementById('price-' + plan).textContent = d.price;
       document.getElementById('period-' + plan).textContent = d.period;
       document.getElementById('original-' + plan).textContent = d.original;
-      document.getElementById('btn-' + plan).href = d.link;
     });
     toggle.classList.toggle('annual', isAnnual);
     labelMonthly.classList.toggle('active', !isAnnual);
@@ -1589,6 +1840,51 @@
     isAnnual = !isAnnual;
     toggle.setAttribute('aria-checked', isAnnual ? 'true' : 'false');
     updatePricing();
+  });
+
+  // PRICING TOGGLE — Offre Self-Service (Mensuel / Trimestriel / Annuel)
+  const ssPlans = {
+    starter: {
+      monthly:   { price: '59€',    period: '/mois', note: '',                          original: '' },
+      quarterly: { price: '159€',   period: '/trim.', note: 'Soit 53€/mois (-10%)',     original: '' },
+      annual:    { price: '566€',   period: '/an',   note: 'Soit 47€/mois (-20%)',      original: '2 MOIS OFFERTS' }
+    },
+    pro: {
+      monthly:   { price: '99€',    period: '/mois', note: '',                          original: '' },
+      quarterly: { price: '267€',   period: '/trim.', note: 'Soit 89€/mois (-10%)',     original: '' },
+      annual:    { price: '950€',   period: '/an',   note: 'Soit 79€/mois (-20%)',      original: '2 MOIS OFFERTS' }
+    },
+    business: {
+      monthly:   { price: '149€',   period: '/mois', note: '',                          original: '' },
+      quarterly: { price: '402€',   period: '/trim.', note: 'Soit 134€/mois (-10%)',    original: '' },
+      annual:    { price: '1 430€', period: '/an',   note: 'Soit 119€/mois (-20%)',     original: '2 MOIS OFFERTS' }
+    }
+  };
+
+  let ssBillingMode = 'monthly';
+
+  function updateSsPricing() {
+    ['starter', 'pro', 'business'].forEach(plan => {
+      const d = ssPlans[plan][ssBillingMode];
+      document.getElementById('ss-price-' + plan).textContent = d.price;
+      document.getElementById('ss-period-' + plan).textContent = d.period;
+      document.getElementById('ss-note-' + plan).textContent = d.note;
+      document.getElementById('ss-original-' + plan).textContent = d.original;
+    });
+    // Mettre à jour les boutons du toggle
+    ['monthly', 'quarterly', 'annual'].forEach(mode => {
+      const btn = document.getElementById('ss-btn-' + mode);
+      const isActive = mode === ssBillingMode;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  ['monthly', 'quarterly', 'annual'].forEach(mode => {
+    document.getElementById('ss-btn-' + mode).addEventListener('click', () => {
+      ssBillingMode = mode;
+      updateSsPricing();
+    });
   });
 
   // CTA click tracking
