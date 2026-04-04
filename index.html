@@ -1173,8 +1173,9 @@
 }
 /* Afficher uniquement sur mobile */
 @media (max-width: 768px) {
+  :root { --sticky-cta-height: 80px; }
   .sticky-cta-mobile { display: block; }
-  body { padding-bottom: 80px; }
+  body { padding-bottom: var(--sticky-cta-height); }
 }
 
 /* ===== #7 — ANIMATIONS DE SCROLL ===== */
@@ -2081,13 +2082,14 @@
   });
 
   // Stagger effect : délai progressif pour les éléments dans un même grid
+  var STAGGER_DELAY_S = 0.1; // délai en secondes entre chaque élément dans un grid
   var grids = document.querySelectorAll(
     '.sectors-grid, .pricing-grid, .testimonials-grid, .steps-grid, .benefits-grid'
   );
   grids.forEach(function(grid) {
     var items = grid.querySelectorAll('.animate-on-scroll');
     items.forEach(function(item, i) {
-      item.style.transitionDelay = (i * 0.1) + 's';
+      item.style.transitionDelay = (i * STAGGER_DELAY_S) + 's';
     });
   });
 
