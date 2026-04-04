@@ -14,7 +14,7 @@
   <link rel="alternate" hreflang="fr" href="https://noveather.fr/">
   <link rel="alternate" hreflang="x-default" href="https://noveather.fr/">
   <meta property="og:title" content="Noveather — Carte de fidélité digitale pour commerçants en Guadeloupe">
-  <meta property="og:description" content="Remplacez vos cartes tampon papier. Carte digitale dans le téléphone de vos clients, sans application. Dès 89€/mois.">
+  <meta property="og:description" content="Remplacez vos cartes tampon papier. Carte digitale dans le téléphone de vos clients, sans application. Dès 109€/mois.">
   <meta property="og:url" content="https://noveather.fr/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -25,7 +25,7 @@
   <meta property="og:image:alt" content="Noveather — Carte de fidélité digitale pour commerçants en Guadeloupe">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Noveather — Carte de fidélité digitale pour commerçants en Guadeloupe">
-  <meta name="twitter:description" content="Remplacez vos cartes tampon papier. Carte digitale dans le téléphone de vos clients, sans application. Dès 89€/mois.">
+  <meta name="twitter:description" content="Remplacez vos cartes tampon papier. Carte digitale dans le téléphone de vos clients, sans application. Dès 109€/mois.">
   <meta name="twitter:image" content="https://noveather.fr/assets/og-image.png">
   <meta name="author" content="Noveather">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -162,41 +162,41 @@
       {
         "@type": "Offer",
         "name": "Starter",
-        "price": "89",
+        "price": "109",
         "priceCurrency": "EUR",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": "89",
+          "price": "109",
           "priceCurrency": "EUR",
           "unitText": "MONTH"
         },
-        "description": "1 type de carte, QR code, Apple Wallet + Google Wallet, 1 point de vente"
+        "description": "Offre de gestion idéal salon beauté & coiffure — configuration complète, campagnes de relance, suivi clients, accompagnement au démarrage"
       },
       {
         "@type": "Offer",
         "name": "Pro",
-        "price": "129",
+        "price": "159",
         "priceCurrency": "EUR",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": "129",
+          "price": "159",
           "priceCurrency": "EUR",
           "unitText": "MONTH"
         },
-        "description": "2 types de cartes, flows automatisés, push géolocalisées, parrainage client"
+        "description": "Offre de gestion pour développer votre clientèle — stratégie personnalisée, segmentation, relances ciblées, suivi des performances"
       },
       {
         "@type": "Offer",
         "name": "Business",
-        "price": "219",
+        "price": "249",
         "priceCurrency": "EUR",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": "219",
+          "price": "249",
           "priceCurrency": "EUR",
           "unitText": "MONTH"
         },
-        "description": "3 types de cartes, jusqu'à 3 points de vente, SMS marketing, onboarding dédié"
+        "description": "Offre de gestion premium pour maximiser votre chiffre d'affaires — scénarios automatiques, analyse complète, rapport mensuel, accompagnement premium"
       }
     ]
   }
@@ -1049,6 +1049,145 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ===== #2 — CTA RÉASSURANCE ===== */
+.cta-reassurance {
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ===== #3 — COMPARISON AMÉLIORÉE ===== */
+/* Gradient de fond plus visuel sur les colonnes */
+.comparison-col.bad {
+  background: linear-gradient(160deg, rgba(239,68,68,0.06) 0%, rgba(239,68,68,0.02) 100%);
+}
+.comparison-col.good {
+  background: linear-gradient(160deg, rgba(16,185,129,0.06) 0%, rgba(16,185,129,0.02) 100%);
+}
+/* Ligne de résumé impactante en bas de chaque colonne */
+.comparison-summary {
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+}
+.comparison-col.bad .comparison-summary {
+  background: rgba(239,68,68,0.08);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.2);
+}
+.comparison-col.good .comparison-summary {
+  background: rgba(16,185,129,0.08);
+  color: #10b981;
+  border: 1px solid rgba(16,185,129,0.2);
+}
+/* Séparateur VS entre les deux colonnes */
+.comparison-vs {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-subtle);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  align-self: center;
+}
+@media (min-width: 769px) {
+  .comparison-grid {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+  }
+  .comparison-vs { display: flex; }
+}
+
+/* ===== #4 — BARRE DE CONFIANCE ===== */
+.trust-bar {
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px;
+}
+.trust-bar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ===== #6 — STICKY CTA MOBILE ===== */
+.sticky-cta-mobile {
+  display: none; /* caché par défaut sur tous les écrans */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  background: var(--bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  padding: 12px 20px;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+.sticky-cta-mobile.visible {
+  transform: translateY(0);
+}
+.sticky-cta-mobile .sticky-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 13px 28px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.sticky-cta-mobile .sticky-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin-top: 6px;
+}
+/* Afficher uniquement sur mobile */
+@media (max-width: 768px) {
+  :root { --sticky-cta-height: 80px; }
+  .sticky-cta-mobile { display: block; }
+  body { padding-bottom: var(--sticky-cta-height); }
+}
+
+/* ===== #7 — ANIMATIONS DE SCROLL ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
@@ -1101,6 +1240,7 @@
              class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly" data-cta="hero_demo">Réserver une démo gratuite</a>
           <a href="#pricing" class="btn-outline" aria-label="Voir les tarifs Noveather" data-cta="hero_pricing">Voir les tarifs</a>
         </div>
+        <p class="cta-reassurance">Sans engagement · Configuré en 48h · Support inclus</p>
         <div class="hero-badges">
           <span class="hero-tag">🍎 Apple Wallet</span>
           <span class="hero-tag">🤖 Google Wallet</span>
@@ -1154,6 +1294,17 @@
   </div>
 </section>
 
+<!-- TRUST BAR — #4 : Barre de confiance avec badges -->
+<div class="trust-bar animate-on-scroll" role="complementary" aria-label="Garanties Noveather">
+  <div class="trust-bar-inner">
+    <span class="trust-badge">🔒 Conforme RGPD</span>
+    <span class="trust-badge">📱 Sans application à télécharger</span>
+    <span class="trust-badge">⚡ Opérationnel en 48h</span>
+    <span class="trust-badge">🇬🇵 Basé en Guadeloupe</span>
+    <span class="trust-badge">💳 Sans engagement</span>
+  </div>
+</div>
+
 <!-- COMPARISON -->
 <section id="comparison">
   <div class="container">
@@ -1172,7 +1323,9 @@
           <li>❌ Zéro automatisation</li>
           <li>❌ Vous ne savez pas combien de clients fidèles vous avez</li>
         </ul>
+        <div class="comparison-summary">📉 Résultat : vous perdez des clients sans le savoir</div>
       </div>
+      <div class="comparison-vs" aria-hidden="true">VS</div>
       <div class="comparison-col good">
         <h3>✅ Noveather</h3>
         <ul>
@@ -1183,6 +1336,7 @@
           <li>✅ Marketing automatisé 24h/24</li>
           <li>✅ CRM complet : chaque client est tracé</li>
         </ul>
+        <div class="comparison-summary">📈 Résultat : +30% de visites récurrentes en moyenne</div>
       </div>
     </div>
     <div class="comparison-center">
@@ -1331,6 +1485,7 @@
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
            aria-label="Commencer avec le plan Starter Accompagné" data-cta="pricing_starter_acc">Commencer avec Starter →</a>
+        <p class="cta-reassurance">Sans engagement · Configuré en 48h · Support inclus</p>
       </div>
 
       <!-- PRO ACCOMPAGNÉ — accent violet #8b5cf6 -->
@@ -1365,6 +1520,7 @@
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
            aria-label="Commencer avec le plan Pro Accompagné" data-cta="pricing_pro_acc">Commencer avec Pro →</a>
+        <p class="cta-reassurance">Sans engagement · Configuré en 48h · Support inclus</p>
       </div>
 
       <!-- BUSINESS ACCOMPAGNÉ — accent orange #f97316 -->
@@ -1398,6 +1554,7 @@
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
            aria-label="Commencer avec le plan Business Accompagné" data-cta="pricing_business_acc">Commencer avec Business →</a>
+        <p class="cta-reassurance">Sans engagement · Configuré en 48h · Support inclus</p>
       </div>
 
     </div><!-- /.pricing-grid -->
@@ -1715,7 +1872,7 @@
          class="btn-primary" aria-label="Réserver une démo gratuite sur Calendly" data-cta="final_demo">Réserver une démo gratuite</a>
       <a href="#pricing" class="btn-outline" aria-label="Voir les tarifs Noveather">Voir les tarifs</a>
     </div>
-    <p class="cta-note">✓ Sans engagement &nbsp;·&nbsp; ✓ Configuré sous 48-72h &nbsp;·&nbsp; ✓ Support inclus</p>
+    <p class="cta-reassurance">Sans engagement · Configuré en 48h · Support inclus</p>
   </div>
 </section>
 
@@ -1898,6 +2055,64 @@
       }
     });
   });
+
+  // ===== #6 — STICKY CTA MOBILE =====
+  // Apparaît après 400px de scroll, uniquement géré via JS (le display est contrôlé par CSS)
+  var stickyCta = document.getElementById('stickyCta');
+  if (stickyCta) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }, { passive: true });
+  }
+
+  // ===== #7 — ANIMATIONS DE SCROLL (IntersectionObserver) =====
+  // Ajouter la classe animate-on-scroll sur les éléments ciblés
+  var scrollTargets = document.querySelectorAll(
+    'section, .card, .pricing-card, .testimonial-card, .step, .faq-item'
+  );
+  scrollTargets.forEach(function(el) {
+    // Ne pas animer les éléments qui ont déjà une animation CSS propre (hero)
+    if (!el.closest('#hero')) {
+      el.classList.add('animate-on-scroll');
+    }
+  });
+
+  // Stagger effect : délai progressif pour les éléments dans un même grid
+  var STAGGER_DELAY_S = 0.1; // délai en secondes entre chaque élément dans un grid
+  var grids = document.querySelectorAll(
+    '.sectors-grid, .pricing-grid, .testimonials-grid, .steps-grid, .benefits-grid'
+  );
+  grids.forEach(function(grid) {
+    var items = grid.querySelectorAll('.animate-on-scroll');
+    items.forEach(function(item, i) {
+      item.style.transitionDelay = (i * STAGGER_DELAY_S) + 's';
+    });
+  });
+
+  // Observer pour déclencher l'animation
+  if ('IntersectionObserver' in window) {
+    var scrollObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+      scrollObserver.observe(el);
+    });
+  } else {
+    // Fallback : tout afficher si IntersectionObserver non supporté
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+      el.classList.add('animated');
+    });
+  }
 </script>
 <script src="/cookie-banner.js" defer></script>
 <!-- WhatsApp Float Button -->
@@ -1908,5 +2123,12 @@
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.854L.057 23.5a.5.5 0 00.613.613l5.652-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.667-.525-5.176-1.434l-.372-.22-3.853 1.005 1.028-3.742-.242-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
   </svg>
 </a>
+<!-- #6 — STICKY CTA MOBILE -->
+<div class="sticky-cta-mobile" id="stickyCta" aria-label="Réserver une démo">
+  <a href="https://calendly.com/mathis-noveather/30min" target="_blank" rel="noopener noreferrer"
+     class="sticky-btn" aria-label="Réserver une démo gratuite sur Calendly" data-cta="sticky_mobile_cta">Réserver une démo gratuite</a>
+  <p class="sticky-note">Sans engagement · Réponse en 24h</p>
+</div>
+
 </body>
 </html>
