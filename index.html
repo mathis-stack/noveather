@@ -1327,7 +1327,7 @@
         </ul>
 
         <a id="btn-starter"
-           href="https://wa.me/message/RXQRCEI6D6PIH1"
+           href="https://buy.stripe.com/14A14nbFs3L39fMf2q7Zu02"
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
            aria-label="Commencer avec le plan Starter Accompagné" data-cta="pricing_starter_acc">Commencer avec Starter →</a>
@@ -1361,7 +1361,7 @@
         </ul>
 
         <a id="btn-pro"
-           href="https://wa.me/message/RXQRCEI6D6PIH1"
+           href="https://buy.stripe.com/14A14n8tg5TbbnU2fE7Zu04"
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
            aria-label="Commencer avec le plan Pro Accompagné" data-cta="pricing_pro_acc">Commencer avec Pro →</a>
@@ -1394,7 +1394,7 @@
         </ul>
 
         <a id="btn-business"
-           href="https://wa.me/message/RXQRCEI6D6PIH1"
+           href="https://buy.stripe.com/fZu3cvdNA3L34Zw6vU7Zu06"
            target="_blank" rel="noopener noreferrer"
            class="btn-primary" style="width:100%;text-align:center;display:block"
            aria-label="Commencer avec le plan Business Accompagné" data-cta="pricing_business_acc">Commencer avec Business →</a>
@@ -1807,16 +1807,16 @@
 
   const plans = {
     starter: {
-      monthly: { price: '109€', period: '/mois', original: '' },
-      annual:  { price: '1 090€', period: '/an', original: 'au lieu de 1 308€' }
+      monthly: { price: '109€', period: '/mois', original: '', url: 'https://buy.stripe.com/14A14nbFs3L39fMf2q7Zu02' },
+      annual:  { price: '1 090€', period: '/an', original: 'au lieu de 1 308€', url: 'https://buy.stripe.com/bJe14ngZMftLgIe6vU7Zu0a' }
     },
     pro: {
-      monthly: { price: '159€', period: '/mois', original: '' },
-      annual:  { price: '1 590€', period: '/an', original: 'au lieu de 1 908€' }
+      monthly: { price: '159€', period: '/mois', original: '', url: 'https://buy.stripe.com/14A14n8tg5TbbnU2fE7Zu04' },
+      annual:  { price: '1 590€', period: '/an', original: 'au lieu de 1 908€', url: 'https://buy.stripe.com/6oU8wPaBo81j4Zwg6u7Zu0b' }
     },
     business: {
-      monthly: { price: '249€', period: '/mois', original: '' },
-      annual:  { price: '2 490€', period: '/an', original: 'au lieu de 2 988€' }
+      monthly: { price: '249€', period: '/mois', original: '', url: 'https://buy.stripe.com/fZu3cvdNA3L34Zw6vU7Zu06' },
+      annual:  { price: '2 490€', period: '/an', original: 'au lieu de 2 988€', url: 'https://buy.stripe.com/5kQ7sLaBoa9r4Zw07w7Zu0c' }
     }
   };
 
@@ -1829,6 +1829,7 @@
       document.getElementById('price-' + plan).textContent = d.price;
       document.getElementById('period-' + plan).textContent = d.period;
       document.getElementById('original-' + plan).textContent = d.original;
+      document.getElementById('btn-' + plan).href = d.url;
     });
     toggle.classList.toggle('annual', isAnnual);
     labelMonthly.classList.toggle('active', !isAnnual);
@@ -1841,6 +1842,8 @@
     toggle.setAttribute('aria-checked', isAnnual ? 'true' : 'false');
     updatePricing();
   });
+
+  updatePricing();
 
   // PRICING TOGGLE — Offre Self-Service (Mensuel / Trimestriel / Annuel)
   const ssPlans = {
