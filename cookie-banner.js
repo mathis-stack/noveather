@@ -1,13 +1,17 @@
 (function () {
   'use strict';
 
+  var GA_ID = 'G-85GNEL3LRV';
   var GTM_ID = 'GTM-PZR9FSVF';
   var COOKIE_NAME = 'noveather_consent';
   var COOKIE_DAYS = 395; // 13 months max (CNIL)
 
-  // ── Consent Mode v2 default (before any consent) ──────────────────────────
+  // ── dataLayer + gtag helper ───────────────────────────────────────────────
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag; // expose globally for triggerConsentUpdate compatibility
+
+  // ── Consent Mode v2 default (before any tag fires) ────────────────────────
   gtag('consent', 'default', {
     ad_storage: 'denied',
     ad_user_data: 'denied',
@@ -15,6 +19,17 @@
     analytics_storage: 'denied',
     wait_for_update: 500
   });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+
+  // ── Load gtag.js (GA4) ────────────────────────────────────────────────────
+  var gs = document.createElement('script');
+  gs.async = true;
+  gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(gs);
+
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
 
   // ── Cookie helpers ────────────────────────────────────────────────────────
   function setCookie(name, value, days) {
@@ -79,6 +94,12 @@
       });
     }
   }
+
+  // ── Global triggerConsentUpdate (backward compat) ─────────────────────────
+  window.triggerConsentUpdate = function () {
+    applyConsent('accepted');
+    setCookie(COOKIE_NAME, 'accepted', COOKIE_DAYS);
+  };
 
   // ── Banner HTML & CSS ─────────────────────────────────────────────────────
   var STYLES = [
