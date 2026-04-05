@@ -29,13 +29,24 @@
   }
 
   // ── GTM loader ────────────────────────────────────────────────────────────
-  function loadGTM() {
+  function loadGTM(consentChoice) {
     if (window._gtmLoaded) return;
     window._gtmLoaded = true;
     window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    // Re-envoyer le consent update UNE FOIS que GTM est chargé
+    s.onload = function () {
+      if (consentChoice === 'accepted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted'
+        });
+      }
+    };
     document.head.appendChild(s);
     // noscript fallback already absent when JS runs — add iframe for completeness
     var ns = document.createElement('noscript');
@@ -58,7 +69,7 @@
         ad_personalization: 'granted',
         analytics_storage: 'granted'
       });
-      loadGTM();
+      loadGTM('accepted');
     } else {
       gtag('consent', 'update', {
         ad_storage: 'denied',
